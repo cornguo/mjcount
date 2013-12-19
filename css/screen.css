@@ -76,7 +76,7 @@ body article {
   width: 70%;
   height: auto;
   margin: auto;
-  margin-top: 7%;
+  margin-top: 3%;
   padding: 3%;
   border: 1px solid #333;
   border-radius: 15px;
@@ -130,6 +130,7 @@ input[type="submit"]:active {
 
 #tokens {
   line-height: 36px;
+  height: 36px;
   width: 100%;
   border-radius: 5px;
   border: 1px solid #d2d2d2;
