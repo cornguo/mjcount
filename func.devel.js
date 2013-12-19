@@ -56,14 +56,17 @@ function sayTokens() {
     }
 }
 
+function tokenMake(key) {
+    return $('<li data-token="' + key + '">' + names[key] + '</li>').on('click', function() {$(this).remove()});
+}
+
 $(document).ready(function() {
     renderTags(clips);
     $('.draggable ul li').draggable({ revert: true });
     $('.droppable').droppable({
         drop: function(e, obj) {
             var key = obj.draggable.data('token');
-            var token = $('<li data-token="' + key + '">' + names[key] + '</li>').on('click', function() {$(this).remove()});
-            $('#tokens').append(token);
+            $('#tokens').append(tokenMake(key));
         }
     });
     var string = window.location.hash.substr(1);
