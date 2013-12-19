@@ -150,7 +150,7 @@ function getTimeString() {
     retStr += hour % 10 + ' dian ';
 
     if (0 == minute) {
-        retStr += '0 fen';
+        retStr += 'whole';
         return retStr;
     }
 
