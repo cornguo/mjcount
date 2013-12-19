@@ -143,6 +143,6 @@ input[type="submit"] {
 }
 #fb_like {
   position: absolute;
-  bottom: 20px;
+  top: 10%;
   right: 5px;
 }
