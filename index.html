@@ -81,7 +81,8 @@ function renderButtons(objs) {
             obj.each(function(oi, oj) {
                 var button = $('<button data-token="' + key + '">' + key + '</button>');
                 button.on('click', function() {
-                    var sound = new Howl({urls: ['clips/' + objs[key][oi] + '.ogg']}).play();
+                    var filename = 'convert/' + objs[key][oi];
+                    var sound = new Howl({urls: [filename + '.ogg', filename + '.mp3']}).play();
                 });
                 $('#buttons').append(button);
             });
@@ -103,8 +104,9 @@ function sayTokens() {
 
     if (sentence.length > 0) {
         $(sentence).each(function(i, path) {
+            filename = 'convert/' + path;
             sentence[i] = new Howl({
-                urls: ['clips/' + path + '.ogg'],
+                urls: [filename + '.ogg', filename + '.mp3'],
                 onend: function() {
                     if ((i+1) < sentence.length) {
                         sentence[i+1].play();
