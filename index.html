@@ -84,7 +84,13 @@ function renderButtons(objs) {
                 var button = $('<button data-token="' + key + '">' + key + '</button>');
                 button.on('click', function() {
                     var filename = 'convert/' + path;
-                    var sound = new Howl({urls: [filename + '.ogg', filename + '.mp3']}).play();
+                    var sound = new Howl({
+                        urls: [filename + '.ogg', filename + '.mp3'],
+                        onend: function() {
+                            this.unload();
+                        }
+                    });
+                    sound.play();
                 });
                 $('#buttons').append(button);
             });
@@ -113,6 +119,7 @@ function sayTokens() {
                     if ((i+1) < sentence.length) {
                         sentence[i+1].play();
                     }
+                    this.unload();
                 }
             });
         });
