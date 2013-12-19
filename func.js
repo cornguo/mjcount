@@ -77,7 +77,7 @@ function renderButtons(objs) {
                 button.on('click', function() {
                     var filename = 'convert/' + path;
                     var sound = new Howl({
-                        urls: [filename + '.ogg', filename + '.mp3'],
+                        urls: [filename + '.mp3', filename + '.ogg'],
                         onend: function() {
                             this.unload();
                         }
@@ -106,7 +106,7 @@ function sayTokens() {
         $(sentence).each(function(i, path) {
             filename = 'convert/' + path;
             sentence[i] = new Howl({
-                urls: [filename + '.ogg', filename + '.mp3'],
+                urls: [filename + '.mp3', filename + '.ogg'],
                 onend: function() {
                     if ((i+1) < sentence.length) {
                         sentence[i+1].play();
