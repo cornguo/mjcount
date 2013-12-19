@@ -15,8 +15,7 @@ function renderButtons(objs) {
                         }
                     });
                     sound.play();
-                })
-                .mousedown(holdTimer(), holdHandler());
+                }).mousedown(holdTimer(), holdHandler());
                 $('#buttons').append(button);
             });
         }
@@ -53,8 +52,11 @@ function actionDelegate(handler) {
 }
 
 function holdTimer(delegate, time) {
-    return function(clicked) {
-        return setTimeout(delegate(clicked, time), time);
+        return setTimeout(function() {
+            $('#tokens').val(function(index, valueCurrent) {
+                return $.trim(valueCurrent + ' ' + $(clicked).data('token'));
+            })
+        }, 1500);
     };
 }
 
