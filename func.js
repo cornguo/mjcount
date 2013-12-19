@@ -23,26 +23,7 @@ function renderButtons(objs) {
     });
 }
 
-function holdEvent(element, handler, time) {
-    element.mousedown(
-        function() {
-            return setTimeout(
-                function() {
-                    handler(element);
-
-                    holdEventDelayedLoop(element, handler, time)
-                },
-                time);
-        },
-        function(eventDown) {
-            $(eventDown.target).mouseup(
-                eventDown.data(),
-                holdClearer(true)
-            );
-
-            return false;
-        });
-}
+(function($) {
 
 function holdClearer(isTimeout) {
     return function(event) {
@@ -51,17 +32,6 @@ function holdClearer(isTimeout) {
             : clearInterval(event.data);
 
         return false;
-    }
-}
-
-function tokenUpdater() {
-    return function(elementClicked) {
-        $('#tokens')
-            .val(function(index, valueCurrent) {
-                return $.trim(valueCurrent
-                    + ' '
-                    + elementClicked.data('token'))
-            });
     }
 }
 
@@ -80,28 +50,48 @@ function holdEventDelayedLoop(element, handler, time) {
     );
 }
 
-function holdTimer(delegate, time) {
-        return setTimeout(function() {
-            $('#tokens').val(function(index, valueCurrent) {
-                return $.trim(valueCurrent + ' ' + $(clicked).data('token'));
-            })
-        }, 500);
-    };
+$.fn.holdEvent = function(options) {
+    var settings = $.extend(
+        {
+            handler: function() {},
+            time: 1500
+        },
+        options),
+        element = this;
+
+    this.mousedown(
+        function() {
+            return setTimeout(
+                function() {
+                    settings.handler(element);
+
+                    holdEventDelayedLoop(element, settings.handler, settings.time)
+                },
+                settings.time);
+        },
+        function(eventDown) {
+            $(eventDown.target).mouseup(
+                eventDown.data(),
+                holdClearer(true)
+            );
+
+            return false;
+        });
+
+    return this;
 }
 
-function holdHandler() {
-    return function(eventDown) {
-        $(eventDown.target).mouseup(
-            eventDown.data(eventDown.target),
-            function(eventUp) {
-                clearTimeout(eventUp.data);
+})(jQuery)
 
-                return false;
-            }
-        );
-
-        return false;
-    };
+function tokenUpdater() {
+    return function(elementClicked) {
+        $('#tokens')
+            .val(function(index, valueCurrent) {
+                return $.trim(valueCurrent
+                    + ' '
+                    + elementClicked.data('token'))
+            });
+    }
 }
 
 function sayTokens() {
