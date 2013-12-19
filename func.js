@@ -83,11 +83,42 @@ function renderButtons(objs) {
                         }
                     });
                     sound.play();
-                });
+                })
+                .mousedown(holdTimer(), holdHandler());
                 $('#buttons').append(button);
             });
         }
     });
+}
+
+function holdTimer() {
+    return function(clicked) {
+        return setTimeout(
+            function() {
+                $('#tokens')
+                    .val(function(index, valueCurrent) {
+                        return $.trim(valueCurrent
+                            + ' '
+                            + $(clicked).data('token'))
+                    })
+            },
+            1500);
+    };
+}
+
+function holdHandler() {
+    return function(eventDown) {
+        $(eventDown.target).mouseup(
+            eventDown.data(eventDown.target),
+            function(eventUp) {
+                clearTimeout(eventUp.data);
+
+                return false;
+            }
+        );
+
+        return false;
+    };
 }
 
 function sayTokens() {
