@@ -1,35 +1,33 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<title>MC MJ TTS</title>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script type="text/javascript" src="./howler.js/howler.min.js"></script>
-<script type="text/javascript" src="./func.js"></script>
-<style type="text/css">
-button, input[type=submit] {
-    margin: 5px;
-    padding: 0 10px;
-    height: 40px;
-}
-#tokens {
-    padding: 5px;
-    font-size: 14px;
-    width: 400px;
-}
-</style>
-</head>
-<body>
-<h1>點點看</h1>
-<div id="buttons"></div>
-<div>
-    <form onsubmit="javascript:window.location.hash=$('#tokens').val().replace(/ /g, '_');sayTokens();return false;">
-    <p>
-        把上面的單字打進去用空格隔開: <input type="text" id="tokens"></input>
-        <input type="submit" value="然後按這個"></input>
-    </p>
-    </form>
-</div>
-<!-- yes, you can duplicate, extend it without my permission -->
-</body>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            scsstest
+        </title>
+        <link rel="stylesheet" href="css/screen.css">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script type="text/javascript" src="./howler.js/howler.min.js"></script>
+        <script type="text/javascript" src="./func.js"></script>
+    </head>
+    <body>
+        <article>
+            <h1>
+                點點看
+            </h1>
+            <div id="buttons">
+            </div>
+            <div>
+                <form onsubmit="javascript:window.location.hash=$('#tokens').val().replace(/ /g, '_');sayTokens();return false;">
+                    <p>
+                        把上面的單字打進去用空格隔開 : <input type="text" id="tokens"><input type="submit" value="然後按這個">
+                    </p>
+                </form>
+            </div><!-- yes, you can duplicate, extend it without my permission -->
+            <div id="window-resizer-tooltip">
+                <a href="#" title="Edit settings" style="background-image: url(chrome-extension://kkelicaakdanhinjdeammmilcgefonfh/images/icon_19.png);"></a><span class="tooltipTitle">Window size:</span> <span class="tooltipWidth" id="winWidth"></span> x <span class="tooltipHeight" id="winHeight"></span><br>
+                <span class="tooltipTitle">Viewport size:</span> <span class="tooltipWidth" id="vpWidth"></span> x <span class="tooltipHeight" id="vpHeight"></span>
+            </div>
+        </article>
+    </body>
 </html>

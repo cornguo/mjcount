@@ -1,0 +1,142 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+html {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+q, blockquote {
+  quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+a img {
+  border: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+:focus {
+  outline: 0;
+}
+
+.clear {
+  clear: both;
+}
+
+body {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  background: white url(../imgs/robots.png) 0 0 repeat;
+  font-size: 13px;
+  color: #3c3c3c;
+}
+body article {
+  width: 70%;
+  height: auto;
+  margin: auto;
+  margin-top: 7%;
+  padding: 3%;
+  border: 1px solid #333;
+  border-radius: 15px;
+  background: white url(../imgs/paper_1.png) repeat;
+}
+body article h1 {
+  line-height: 40px;
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #000;
+  text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5);
+}
+body article div#buttons {
+  padding: 10px;
+  border-top: 1px solid #8f8f8f;
+  border-bottom: 1px solid #8f8f8f;
+  padding-bottom: 15px;
+}
+body article div form {
+  line-height: 36px;
+  margin-top: 1%;
+}
+
+button,
+input[type="submit"] {
+  padding: 0px 18px;
+  height: 40px;
+  border: 0;
+  margin: 1%;
+  color: #302d28;
+  font-size: 15px;
+  line-height: 30px;
+  border-radius: 5px;
+  box-shadow: 0 1px 0 #cccccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbbbbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaaaaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 20px 20px rgba(0, 0, 0, 0.15);
+  background: #f1f1f1;
+}
+button:hover,
+input[type="submit"]:hover {
+  background: #fff;
+  color: #0090ff;
+}
+button:active,
+input[type="submit"]:active {
+  background: #363636;
+  color: #b4f9ff;
+  height: 40px;
+  position: relative;
+  top: 3px;
+  box-shadow: inset 0 1px 0 #cccccc, inset 0 2px 0 #c9c9c9, inset 0 3px 0 #bbbbbb, inset 0 4px 0 #b9b9b9, inset 0 5px 0 #aaaaaa, inset 0 6px 1px rgba(0, 0, 0, 0.1), inset 0 0 5px rgba(0, 0, 0, 0.1), inset 0 1px 3px rgba(0, 0, 0, 0.3), inset 0 3px 5px rgba(0, 0, 0, 0.2), inset 0 5px 10px rgba(0, 0, 0, 0.25);
+}
+
+#tokens {
+  line-height: 36px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #d2d2d2;
+}
+
+input[type="submit"] {
+  margin: auto;
+  display: block;
+  margin-top: 25px;
+}
