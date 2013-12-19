@@ -110,13 +110,17 @@ function sayTokens() {
                 onend: function() {
                     if ((i+1) < sentence.length) {
                         sentence[i+1].play();
+                    } else {
+                        $(sentence).each(function(i, obj) {
+                            obj.unload();
+                        });
                     }
-                    this.unload();
                 }
             });
         });
 
         sentence[0].play();
+
     }
 }
 
