@@ -142,7 +142,6 @@ input[type="submit"] {
   margin-top: 25px;
 }
 #fb_like {
-  position: absolute;
-  top: 10%;
-  right: 5px;
+  float: right;
+  width: 100px;
 }
