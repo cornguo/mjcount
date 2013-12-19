@@ -16,6 +16,8 @@ function renderTags(objs) {
                     }
                 });
                 sound.play();
+                tag.holdEvent({ handler: tokenUpdater() });
+                $('#tags').append(tag);
             });
             $('#tags').append(tag);
         }
@@ -57,6 +59,13 @@ function sayTokens() {
 
 function tokenMake(key) {
     return $('<li data-token="' + key + '">' + names[key] + '</li>').on('click', function() {$(this).remove()});
+}
+
+function tokenUpdater() {
+    return function(elementClicked) {
+        tokenMake(elementClicked.data('token'))
+            .appendTo('#tokens')
+    }
 }
 
 $(document).ready(function() {

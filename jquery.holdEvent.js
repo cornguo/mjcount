@@ -5,8 +5,6 @@ function holdClearer(isTimeout) {
         isTimeout ?
             clearTimeout(event.data)
             : clearInterval(event.data);
-
-        return false;
     }
 }
 
