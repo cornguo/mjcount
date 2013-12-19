@@ -15,7 +15,8 @@ function renderButtons(objs) {
                         }
                     });
                     sound.play();
-                });
+                })
+                .mousedown(holdTimer(), holdHandler());
                 $('#buttons').append(button);
             });
         }
