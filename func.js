@@ -23,42 +23,60 @@ function renderButtons(objs) {
     });
 }
 
-function holdEvent(element) {
+function holdEvent(element, handler, time) {
     element.mousedown(
-        holdTimer(actionDelegate(tokenUpdater()), 1500),
-        holdHandler()
-    );
+        function() {
+            return setTimeout(
+                function() {
+                    handler(element);
+
+                    holdEventDelayedLoop(element, handler, time)
+                },
+                time);
+        },
+        function(eventDown) {
+            $(eventDown.target).mouseup(
+                eventDown.data(),
+                holdClearer(true)
+            );
+
+            return false;
+        });
+}
+
+function holdClearer(isTimeout) {
+    return function(event) {
+        isTimeout ?
+            clearTimeout(event.data)
+            : clearInterval(event.data);
+
+        return false;
+    }
 }
 
 function tokenUpdater() {
-    return function(clicked) {
+    return function(elementClicked) {
         $('#tokens')
             .val(function(index, valueCurrent) {
                 return $.trim(valueCurrent
                     + ' '
-                    + $(clicked).data('token'))
+                    + elementClicked.data('token'))
             });
     }
 }
 
-function actionDelegate(handler) {
-    return function(clicked, time) {
-        return function() {
-            handler(clicked);
-
-            actionLoop(clicked, handler, time)
-        }
-    }
-}
-
-function actionLoop(clicked, handler, time) {
-    $(clicked).mouseup(
-        setInterval(function() { handler(clicked); }, time / 10),
-        function(eventUp) {
-            clearInterval(eventUp.data);
-
-            return false;
-        }
+function holdEventDelayedLoop(element, handler, time) {
+    element.mouseup(
+        setTimeout(
+            function() {
+                element.mouseup(
+                    setInterval(function() { handler(element); }, time / 10),
+                    holdClearer(false)
+                );
+            },
+            time / 2
+        ),
+        holdClearer(true)
     );
 }
 
