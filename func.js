@@ -74,7 +74,7 @@ function renderButtons(objs) {
         if (obj.length > 0) {
             obj.each(function(j, path) {
                 var button = $('<button data-token="' + key + '">' + key + '</button>');
-                button.on('click', function() {
+                button.on('mousedown', function() {
                     var filename = 'convert/' + path;
                     var sound = new Howl({
                         urls: [filename + '.ogg', filename + '.mp3'],
