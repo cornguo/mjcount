@@ -57,7 +57,7 @@ function holdTimer(delegate, time) {
             $('#tokens').val(function(index, valueCurrent) {
                 return $.trim(valueCurrent + ' ' + $(clicked).data('token'));
             })
-        }, 1500);
+        }, 500);
     };
 }
 
