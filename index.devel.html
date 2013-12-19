@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title>MC MJ TTS</title>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<script type="text/javascript" src="./howler.js/howler.min.js"></script>
+<script type="text/javascript" src="./func.devel.js"></script>
+<style type="text/css">
+.container {
+    border: 1px dashed #666;
+    margin: 1em;
+    padding: 1em;
+}
+.clear {
+    clear: both;
+    margin: -4px;
+    visibility: hidden;
+}
+h1 {
+    display: inline;
+}
+ul {
+    width: 100%;
+    padding: 6px;
+    list-style-type: none;
+    min-height: 1em;
+}
+ul li {
+    border: 1px solid;
+    padding: 5px;
+    cursor: pointer;
+    float: left;
+    margin: 0.2em;
+}
+#say {
+    height: 2em;
+}
+</style>
+</head>
+<body>
+<div class="container draggable">
+    <h1>詞庫</h1>
+    <ul id="tags"></ul>
+    <hr class="clear" />
+</div>
+<div class="container droppable">
+    <h1>排字區</h1>
+    <button id="say">說吧！</button>
+    <ul id="tokens"></ul>
+    <hr class="clear" />
+</div>
+<!-- yes, you can duplicate, extend it without my permission -->
+</body>
+</html>
