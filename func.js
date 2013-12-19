@@ -91,18 +91,20 @@ function renderButtons(objs) {
     });
 }
 
+function tokenUpdater(clicked) {
+    return function() {
+        $('#tokens')
+            .val(function(index, valueCurrent) {
+                return $.trim(valueCurrent
+                    + ' '
+                    + $(clicked).data('token'))
+            });
+    }
+}
+
 function holdTimer(time) {
     return function(clicked) {
-        return setTimeout(
-            function() {
-                $('#tokens')
-                    .val(function(index, valueCurrent) {
-                        return $.trim(valueCurrent
-                            + ' '
-                            + $(clicked).data('token'))
-                    })
-            },
-            time);
+        return setTimeout(tokenUpdater(clicked), time);
     };
 }
 
