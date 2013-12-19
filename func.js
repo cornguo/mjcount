@@ -136,3 +136,24 @@ $(document).ready(function() {
         sayTokens();
     }
 });
+
+function getTimeString() {
+    var date = new Date();
+    var hour = date.getHours();
+    var minute = date.getMinutes();
+    var retStr = '';
+
+    if (hour - 10 >= 0) {
+        retStr += parseInt(hour/10) + ' ';
+        retStr += '10 ';
+    }
+    retStr += hour % 10 + ' dian ';
+
+    if (minute - 10 >= 0) {
+        retStr += parseInt(minute/10) + ' ';
+        retStr += '10 ';
+    }
+    retStr += minute % 10 + ' fen';
+
+    return retStr;
+}

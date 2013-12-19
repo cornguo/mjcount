@@ -25,7 +25,10 @@
             <div>
                 <form onsubmit="javascript:window.location.hash=$('#tokens').val().replace(/ /g, '_');sayTokens();return false;">
                     <p>
-                        把上面的單字打進去用空格隔開 : <input type="text" id="tokens"><input type="submit" value="然後按這個">
+                        把上面的單字打進去用空格隔開 :
+                        <input type="text" id="tokens">
+                        <input type="submit" value="說說看">
+                        <button onclick="javascript:$('#tokens').val(getTimeString());this.parent.submit();">報時</button>
                     </p>
                 </form>
             </div><!-- yes, you can duplicate, extend it without my permission -->
