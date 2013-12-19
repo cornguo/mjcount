@@ -7,20 +7,15 @@ function renderButtons(objs) {
             obj.each(function(j, path) {
                 var button = $('<button data-token="' + key + '">' + key + '</button>');
                 button.on('mousedown', function() {
-                    try {
-                        var filename = 'convert/' + path;
-                        var sound = new Howl({
-                            urls: [filename + '.ogg', filename + '.mp3'],
-                            onend: function() {
-                                this.unload();
-                            }
-                        });
-                        sound.play();
-                    } catch(e) {
-                        console.log('Howl is not found')
-                    }
-                })
-                .mousedown(holdTimer(1500), holdHandler());
+                    var filename = 'convert/' + path;
+                    var sound = new Howl({
+                        urls: [filename + '.ogg', filename + '.mp3'],
+                        onend: function() {
+                            this.unload();
+                        }
+                    });
+                    sound.play();
+                });
                 $('#buttons').append(button);
             });
         }
