@@ -84,14 +84,14 @@ function renderButtons(objs) {
                     });
                     sound.play();
                 })
-                .mousedown(holdTimer(), holdHandler());
+                .mousedown(holdTimer(1500), holdHandler());
                 $('#buttons').append(button);
             });
         }
     });
 }
 
-function holdTimer() {
+function holdTimer(time) {
     return function(clicked) {
         return setTimeout(
             function() {
@@ -102,7 +102,7 @@ function holdTimer() {
                             + $(clicked).data('token'))
                     })
             },
-            1500);
+            time);
     };
 }
 
