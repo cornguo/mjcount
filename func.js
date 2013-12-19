@@ -1,11 +1,12 @@
-clips = $(document).data('clips');
+var clips = $(document).data('clips');
+var names = $(document).data('names');
 
 function renderButtons(objs) {
     $(Object.keys(objs)).each(function(i, key) {
         var obj = $(objs[key]);
         if (obj.length > 0) {
             obj.each(function(j, path) {
-                var button = $('<button data-token="' + key + '">' + key + '</button>');
+                var button = $('<button data-token="' + key + '">' + names[key] + '</button>');
                 button.on('mousedown', function() {
                     var filename = 'convert/' + path;
                     var sound = new Howl({
