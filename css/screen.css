@@ -68,7 +68,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 body {
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  background: white url(../imgs/robots.png) 0 0 repeat;
+  background: black url(../imgs/robots.png) 110% 40% no-repeat;
   font-size: 13px;
   color: #3c3c3c;
 }
@@ -76,11 +76,10 @@ body article {
   width: 70%;
   height: auto;
   margin: auto;
-  margin-top: 2%;
+  margin-top: 3%;
   padding: 3%;
-  border: 1px solid #333;
   border-radius: 15px;
-  background: white url(../imgs/paper_1.png) repeat;
+  background: rgba(202, 221, 228, 0.8);
 }
 body article h1 {
   line-height: 40px;
