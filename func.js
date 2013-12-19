@@ -23,8 +23,8 @@ function renderButtons(objs) {
     });
 }
 
-function tokenUpdater(clicked) {
-    return function() {
+function tokenUpdater() {
+    return function(clicked) {
         $('#tokens')
             .val(function(index, valueCurrent) {
                 return $.trim(valueCurrent
@@ -34,9 +34,27 @@ function tokenUpdater(clicked) {
     }
 }
 
-function holdTimer(time) {
+function actionDelegate(handler) {
+    return function(clicked, time) {
+        return function() {
+            handler(clicked);
+
+            // set repeater
+            $(clicked).mouseup(
+                setInterval(function() { handler(clicked); }, time / 10),
+                function(eventUp) {
+                    clearInterval(eventUp.data);
+
+                    return false;
+                }
+            );
+        }
+    }
+}
+
+function holdTimer(delegate, time) {
     return function(clicked) {
-        return setTimeout(tokenUpdater(clicked), time);
+        return setTimeout(delegate(clicked, time), time);
     };
 }
 
