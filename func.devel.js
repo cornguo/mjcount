@@ -7,7 +7,7 @@ function renderTags(objs) {
         if (obj.length > 0) {
             obj.each(function(j, path) {
                 var tag = $('<li data-token="' + key + '">' + names[key] + '</li>');
-                tag.on('click', function() {
+                tag.on('mousedown', function() {
                     var filename = 'convert/' + path;
                     var sound = new Howl({
                         urls: [filename + '.ogg', filename + '.mp3'],
