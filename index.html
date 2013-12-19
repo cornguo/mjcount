@@ -80,10 +80,10 @@ function renderButtons(objs) {
     $(Object.keys(objs)).each(function(i, key) {
         var obj = $(objs[key]);
         if (obj.length > 0) {
-            obj.each(function(oi, oj) {
+            obj.each(function(j, path) {
                 var button = $('<button data-token="' + key + '">' + key + '</button>');
                 button.on('click', function() {
-                    var filename = 'convert/' + objs[key][oi];
+                    var filename = 'convert/' + path;
                     var sound = new Howl({urls: [filename + '.ogg', filename + '.mp3']}).play();
                 });
                 $('#buttons').append(button);
