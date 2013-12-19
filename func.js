@@ -149,11 +149,19 @@ function getTimeString() {
     }
     retStr += hour % 10 + ' dian ';
 
+    if (0 == minute) {
+        retStr += '0 fen';
+        return retStr;
+    }
+
     if (minute - 10 >= 0) {
         retStr += parseInt(minute/10) + ' ';
         retStr += '10 ';
     }
-    retStr += minute % 10 + ' fen';
+    if (0 === minute % 10) {
+        retStr += minute % 10 + ' ';
+    }
+    retStr += 'fen';
 
     return retStr;
 }
