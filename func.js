@@ -158,7 +158,7 @@ function getTimeString() {
         retStr += parseInt(minute/10) + ' ';
         retStr += '10 ';
     }
-    if (0 === minute % 10) {
+    if (0 != minute % 10) {
         retStr += minute % 10 + ' ';
     }
     retStr += 'fen';
