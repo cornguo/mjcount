@@ -82,14 +82,21 @@ function getTimeString() {
     var minute = date.getMinutes();
     var retStr = '';
 
-    if (hour - 10 >= 0) {
-        retStr += parseInt(hour/10) + ' ';
-        retStr += '10 ';
+    if (2 == hour) {
+        retStr += '2s dian ';
+    } else {
+        if (hour - 10 >= 0) {
+            retStr += parseInt(hour/10) + ' ';
+            retStr += '10 ';
+        }
+        retStr += hour % 10 + ' dian ';
     }
-    retStr += hour % 10 + ' dian ';
 
     if (0 == minute) {
         retStr += 'whole';
+        return retStr;
+    } else if (2 == hour) {
+        retStr += '2s fen';
         return retStr;
     }
 
