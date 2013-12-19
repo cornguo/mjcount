@@ -97,8 +97,8 @@ body article div form {
 
 button,
 input[type="submit"] {
-  padding: 0px 18px;
-  height: 40px;
+  padding: 0px 9px;
+  height: 32px;
   border: 0;
   margin: 1%;
   color: #302d28;
