@@ -76,7 +76,7 @@ body article {
   width: 70%;
   height: auto;
   margin: auto;
-  margin-top: 3%;
+  margin-top: 2%;
   padding: 3%;
   border: 1px solid #333;
   border-radius: 15px;
@@ -140,4 +140,9 @@ input[type="submit"] {
   margin: auto;
   display: block;
   margin-top: 25px;
+}
+#fb_like {
+  position: absolute;
+  bottom: 20px;
+  right: 5px;
 }
