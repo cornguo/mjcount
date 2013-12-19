@@ -23,6 +23,13 @@ function renderButtons(objs) {
     });
 }
 
+function holdEvent(element) {
+    element.mousedown(
+        holdTimer(actionDelegate(tokenUpdater()), 1500),
+        holdHandler()
+    );
+}
+
 function tokenUpdater() {
     return function(clicked) {
         $('#tokens')
