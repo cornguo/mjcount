@@ -39,17 +39,20 @@ function actionDelegate(handler) {
         return function() {
             handler(clicked);
 
-            // set repeater
-            $(clicked).mouseup(
-                setInterval(function() { handler(clicked); }, time / 10),
-                function(eventUp) {
-                    clearInterval(eventUp.data);
-
-                    return false;
-                }
-            );
+            actionLoop(clicked, handler, time)
         }
     }
+}
+
+function actionLoop(clicked, handler, time) {
+    $(clicked).mouseup(
+        setInterval(function() { handler(clicked); }, time / 10),
+        function(eventUp) {
+            clearInterval(eventUp.data);
+
+            return false;
+        }
+    );
 }
 
 function holdTimer(delegate, time) {
