@@ -5,20 +5,19 @@ function renderTags(objs) {
     $(Object.keys(objs)).each(function(i, key) {
         var obj = $(objs[key]);
         if (obj.length > 0) {
-            obj.each(function(j, path) {
-                var tag = $('<li data-token="' + key + '">' + names[key] + '</li>');
-                tag.on('mousedown', function() {
-                    var filename = 'convert/' + path;
-                    var sound = new Howl({
-                        urls: [filename + '.ogg', filename + '.mp3'],
-                        onend: function() {
-                            this.unload();
-                        }
-                    });
-                    sound.play();
+            var path = obj[0];
+            var tag = $('<li data-token="' + key + '">' + names[key] + '</li>');
+            tag.on('click', function() {
+                var filename = 'convert/' + path;
+                var sound = new Howl({
+                    urls: [filename + '.ogg', filename + '.mp3'],
+                    onend: function() {
+                        this.unload();
+                    }
                 });
-                $('#tags').append(tag);
+                sound.play();
             });
+            $('#tags').append(tag);
         }
     });
     $('#tags').append('<hr class="clear"></hr>');

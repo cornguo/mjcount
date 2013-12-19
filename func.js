@@ -5,20 +5,19 @@ function renderButtons(objs) {
     $(Object.keys(objs)).each(function(i, key) {
         var obj = $(objs[key]);
         if (obj.length > 0) {
-            obj.each(function(j, path) {
-                var button = $('<button data-token="' + key + '">' + names[key] + '</button>');
-                button.on('mousedown', function() {
-                    var filename = 'convert/' + path;
-                    var sound = new Howl({
-                        urls: [filename + '.ogg', filename + '.mp3'],
-                        onend: function() {
-                            this.unload();
-                        }
-                    });
-                    sound.play();
-                }).mousedown(holdTimer(), holdHandler());
-                $('#buttons').append(button);
-            });
+            var path = obj[0];
+            var button = $('<button data-token="' + key + '">' + names[key] + '</button>');
+            button.on('mousedown', function() {
+                var filename = 'convert/' + path;
+                var sound = new Howl({
+                    urls: [filename + '.ogg', filename + '.mp3'],
+                    onend: function() {
+                        this.unload();
+                    }
+                });
+                sound.play();
+            }).mousedown(holdTimer(), holdHandler());
+            $('#buttons').append(button);
         }
     });
 }
