@@ -84,6 +84,8 @@ function getTimeString() {
 
     if (2 == hour) {
         retStr += '2s dian ';
+    } else if (10 == hour) {
+        retStr += '10 dian ';
     } else {
         if (hour - 10 >= 0) {
             retStr += parseInt(hour/10) + ' ';
@@ -95,8 +97,11 @@ function getTimeString() {
     if (0 == minute) {
         retStr += 'whole';
         return retStr;
-    } else if (2 == hour) {
+    } else if (2 == minute) {
         retStr += '2s fen';
+        return retStr;
+    } else if (10 == minute) {
+        retStr += '10 fen';
         return retStr;
     }
 
