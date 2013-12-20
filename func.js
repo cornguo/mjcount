@@ -50,9 +50,27 @@ function sayTokens() {
         playing = true;
         sayToken(tokens, keys, 0);
     } else {
-        appendTokensByString('yousee youseesee haveno is you donot nong i jzlmy');
-        sayTokens();
+        feelLucky();
     }
+}
+
+function feelLucky() {
+    var sentences = [
+        'yousee youseesee haveno is you donot nong i jzlmy',
+        'chok',
+        '1 ke 2s ke 3 ke 4 ke total 5 bei ec',
+        'sorry i wrong wehaveto love gay friend wow',
+        'ldzy czr',
+        'uh',
+        'ng already ' + getTimeString() + ' wow bk de classmate qz',
+        'ahy qsj allare friend',
+        'ng cloud ng mist czr',
+        'we love 5 5 6 6',
+        'i de sound very moe i love moe',
+        'youhaveto share i de sound'
+    ];
+    appendTokensByString(sentences[Math.floor(Math.random()*sentences.length)]);
+    sayTokens();
 }
 
 function genPath(key) {
@@ -117,6 +135,7 @@ $(document).ready(function() {
     });
     $('#time').on('click', function() {
         $('#tokens').empty();
+        playing = false;
         appendTokensByString(getTimeString());
         sayTokens();
     });
@@ -127,6 +146,11 @@ $(document).ready(function() {
     $('#stop').on('click', function() {
         playing = false;
         $('#tokens button').removeClass('talking');
+    });
+    $('#lucky').on('click', function() {
+        $('#tokens').empty();
+        playing = false;
+        feelLucky();
     });
 });
 
