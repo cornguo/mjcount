@@ -19,7 +19,7 @@ function renderButtons(objs) {
                     console.log('Howl is not found')
                 }
             })
-            button.holdEvent({ handler: tokenUpdater() })
+            button.holdEvent({ handler: tokenUpdater(), time: 1000 })
             $('#buttons').append(button);
         }
     });
