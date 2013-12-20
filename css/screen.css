@@ -85,8 +85,10 @@ body article h1 {
   color: #000;
   text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5);
 }
-body article div.container {
+body article div {
   padding: 10px;
+}
+body article div.container {
   border-top: 1px solid #8f8f8f;
   border-bottom: 1px solid #8f8f8f;
 }
@@ -96,7 +98,6 @@ body article div#buttons {
 }
 body article div div#tokens {
   padding: 10px;
-  border-bottom: 1px solid #8f8f8f;
   padding-bottom: 15px;
 }
 body article div form {
