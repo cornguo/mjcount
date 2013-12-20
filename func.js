@@ -63,7 +63,15 @@ function feelLucky() {
         'ng cloud ng mist czr',
         'we love 5 5 6 6',
         'i de sound very moe i love moe',
-        'youhaveto share i de sound'
+        'youhaveto share i de sound',
+        'i donot dkhj i donot dksl',
+        'qsj de gay allare friend we donot bcjl',
+        'ohno',
+        'ldzy become 1 haha',
+        'ji ji ji ji bei bei bei bei',
+        'hole 10 hole hole 10 hole 10 hole',
+        'wah',
+        'love i de qjs'
     ];
     appendTokensByString(sentences[Math.floor(Math.random()*sentences.length)]);
 }
