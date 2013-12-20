@@ -85,13 +85,13 @@ body article h1 {
   color: #000;
   text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5);
 }
-body article div {
-    padding: 10px;
-}
-body article div#buttons {
+body article div.container {
   padding: 10px;
   border-top: 1px solid #8f8f8f;
   border-bottom: 1px solid #8f8f8f;
+}
+body article div#buttons {
+  padding: 10px;
   padding-bottom: 15px;
 }
 body article div div#tokens {
