@@ -73,7 +73,7 @@ $(document).data('names', {
     'jzlmy'      : '記住了沒有',
     'kd'         : '砍斷',
     'ke'         : '顆',
-    'ldzy'       : '零的轉移',
+    'ldzy'       : '靈的轉移',
     'lift'       : '提升',
     'listen'     : '聽',
     'long'       : '長',
