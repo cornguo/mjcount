@@ -183,50 +183,34 @@ function getTimeString() {
     var date = new Date();
     var hour = date.getHours();
     var minute = date.getMinutes();
-    var retStr = '';
 
-    if (0 == hour) {
-        retStr += '0 dian';
-    } else if (2 == hour) {
-        retStr += '2s dian ';
-    } else if (10 == hour) {
-        retStr += '10 dian ';
+    if (0 === minute) {
+        return convertNumToTok(hour) + ' dian whole';
     } else {
-        if (hour < 10) {
-            retStr += hour % 10 + ' ';
-        } else if (hour > 10) {
-            retStr += '10 '
-        } else if (hour > 19) {
-            retStr += parseInt(hour/10) + ' ';
-            retStr += '10 ';
+        return convertNumToTok(hour) + ' dian ' + convertNumToTok(minute) + ' fen';
+    }
+}
+
+function convertNumToTok(num) {
+    if (0 == num) {
+        return '0';
+    } else if (2 == num) {
+        return '2s';
+    } else if (10 == num) {
+        return '10';
+    } else {
+        if (num < 10) {
+            return num;
+        } else if (num > 10 && num < 20) {
+            return '10 ' + (num%10);
+        } else if (num >= 20) {
+            var retStr = parseInt(num/10) + ' 10 ';
+            if (num % 10 != 0) {
+                retStr += num % 10;
+            }
+            return retStr;
         }
-        if (hour > 10 && hour % 10 != 0) {
-            retStr += hour % 10 + ' ';
-        }
-        retStr += ' dian ';
     }
-
-    if (0 == minute) {
-        retStr += 'whole';
-        return retStr;
-    } else if (2 == minute) {
-        retStr += '2s fen';
-        return retStr;
-    } else if (10 == minute) {
-        retStr += '10 fen';
-        return retStr;
-    }
-
-    if (parseInt(minute/10) > 1) {
-        retStr += parseInt(minute/10) + ' ';
-    }
-    retStr += '10 ';
-    if (0 != minute % 10) {
-        retStr += minute % 10 + ' ';
-    }
-    retStr += 'fen';
-
-    return retStr;
 }
 
 function getLink() {
