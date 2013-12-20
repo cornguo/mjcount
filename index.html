@@ -15,23 +15,25 @@
         <script type="text/javascript" src="./func.js"></script>
     </head>
     <body>
+        <div id="control">
+            <button id="say">美音你說說</button><br />
+            <button id="stop">閉嘴</button>
+            <button id="clear">清空</button><br />
+            <button id="lucky">美音好手氣</button>
+            <button id="time">美音幾點了</button>
+            <button id="getlink">取得分享連結</button>
+        </div>
         <article>
             <div id="fb_like">
                 <iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fcornguo.atcity.org%2Ftest%2Fmjcount%2F&amp;layout=button_count&amp;show_faces=true&amp;width=100&amp;action=like&amp;colorscheme=light&amp;height=21" style="border:none; overflow:hidden; height:21px;"></iframe>
             </div>
-            <h1>
-                美音 online (MC MJ 語音系統)
-            </h1>
+            <h1>美音 online (MC MJ 語音系統)</h1>
             <div class="container">
                 <span>點 = 聽，長按 = 把單字加進句子裡</span>
                 <div id="buttons"></div>
             </div>
             <div class="container">
-                <button id="say">美音你怎麼說</button>
-                <button id="stop">美音你停一下</button>
-                <button id="time">美音現在幾點了</button>
-                <button id="lucky">美音好手氣</button>
-                <button id="clear">清空</button>
+                <h1>排字區</h1>
                 <span>拖曳 = 排序, 雙點 = 刪除</span>
                 <div id="tokens"></div>
                 <!-- yes, you can duplicate, extend it without my permission -->

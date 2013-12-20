@@ -151,3 +151,15 @@ input[type="submit"], form button {
 .talking {
   background-color: #FCC;
 }
+
+#control {
+  width: 14em;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  text-align:right;
+}
+
+#control button {
+  margin: 6px 2px;
+}
