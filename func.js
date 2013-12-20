@@ -12,14 +12,14 @@ function renderButtons(objs) {
                 try {
                     var sound = new Howl({
                         urls: genPath(path),
-                        onend: function() { this.unload(); }
+                        onend: function() {this.unload();}
                     });
                     sound.play();
                 } catch(e) {
-                    console.log('Howl is not found')
+                    console.log('Howl is not found');
                 }
             })
-            button.holdEvent({ handler: tokenUpdater(), time: 1000 })
+            button.holdEvent({handler: tokenUpdater(), time: 600});
             $('#buttons').append(button);
         }
     });

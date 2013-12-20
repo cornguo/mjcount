@@ -16,7 +16,7 @@ function renderTags(objs) {
                     }
                 });
                 sound.play();
-                tag.holdEvent({ handler: tokenUpdater() });
+                tag.holdEvent({handler: tokenUpdater(), time: 600});
             });
             $('#tags').append(tag);
         }
