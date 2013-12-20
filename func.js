@@ -204,7 +204,10 @@ function getTimeString() {
             retStr += parseInt(hour/10) + ' ';
         }
         retStr += '10 ';
-        retStr += hour % 10 + ' dian ';
+        if (hour > 10 && hour % 10 != 0) {
+            retStr += hour % 10 + ' ';
+        }
+        retStr += ' dian ';
     }
 
     if (0 == minute) {
