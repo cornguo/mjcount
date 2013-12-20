@@ -1,4 +1,0 @@
-ExpiresActive On
-<FilesMatch "\.(ogg|mp3)$">
-Header set Cache-Control "public, max-age=172800"
-</FilesMatch>

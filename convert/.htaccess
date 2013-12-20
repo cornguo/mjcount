@@ -1,0 +1,3 @@
+<FilesMatch "\.(ogg|mp3)$">
+ExpiresDefault A172800
+</FilesMatch>
