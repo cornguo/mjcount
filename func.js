@@ -198,7 +198,9 @@ function getTimeString() {
     var minute = date.getMinutes();
     var retStr = '';
 
-    if (2 == hour) {
+    if (0 == hour) {
+        retStr += '0 dian';
+    }if (2 == hour) {
         retStr += '2s dian ';
     } else if (10 == hour) {
         retStr += '10 dian ';
