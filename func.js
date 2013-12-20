@@ -76,7 +76,8 @@ function feelLucky() {
         'hhd love you de dx jzlmy',
         'i love ke ke ke',
         'i de sound czr',
-        'momo i de thb'
+        'momo i de thb',
+        'you is i de jie mei you is i de bei bei'
     ];
     appendTokensByString(sentences[Math.floor(Math.random()*sentences.length)]);
 }
