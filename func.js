@@ -19,6 +19,7 @@ function renderButtons(objs) {
                 } catch(e) {
                     console.log('Howl is not found');
                 }
+                return false;
             })
             button.holdEvent({handler: tokenUpdater(), time: 600});
             $('#buttons').append(button);
@@ -112,28 +113,34 @@ $(document).ready(function() {
     }
     $('#say').on('click', function() {
         sayTokens();
+        return false;
     });
     $('#time').on('click', function() {
         $('#tokens').empty();
         appendTokensByString(getTimeString());
         sayTokens();
+        return false;
     });
     $('#clear').on('click', function() {
         $('#tokens').empty();
         stopPlaying();
+        return false;
     });
     $('#stop').on('click', function() {
         stopPlaying();
         $('#tokens button').removeClass('talking');
+        return false;
     });
     $('#lucky').on('click', function() {
         $('#tokens').empty();
         feelLucky();
         sayTokens();
+        return false;
     });
     $('#getlink').on('click', function() {
         return prompt('分享連結', getLink());
     });
+    return false;
 });
 
 function stopPlaying() {
@@ -169,6 +176,7 @@ function updateHash() {
         });
         window.location.hash = hash.trim().replace(/ /g, '_');
     }
+    return false;
 }
 
 function getTimeString() {
