@@ -10,9 +10,8 @@ function renderButtons(objs) {
             var button = $('<button data-token="' + key + '">' + names[key] + '</button>');
             button.on('mousedown', function() {
                 try {
-                    var filename = 'convert/' + path;
                     var sound = new Howl({
-                        urls: [filename + '.ogg', filename + '.mp3'],
+                        urls: genPath(path),
                         onend: function() { this.unload(); }
                     });
                     sound.play();
@@ -44,48 +43,51 @@ function sayTokens() {
 
     $('#tokens').val($('#tokens').val().replace(/_/g, ' ').replace(/#/, ''));
     var tokens = $('#tokens').val().trim().split(' ');
-    var paths = convertTokToPath(tokens);
+    var keys = convertTokToKey(tokens);
 
-    if (paths.length > 0) {
+    if (keys.length > 0) {
 //        tokens.removeClass('talking');
         playing = true;
-        sayToken(tokens, paths, 0);
+        sayToken(tokens, keys, 0);
     }
 }
 
-function convertTokToPath(tokens) {
-    var paths = [];
+function genPath(key) {
+    var filename = 'convert/' + key;
+    return [filename + '.ogg', filename + '.mp3'];
+}
+
+function convertTokToKey(tokens) {
+    var keys = [];
     $(tokens).each(function(i, key) {
         var tokenSet = clips[key];
         if ('undefined' !== typeof(tokenSet)) {
             var token = tokenSet[Math.floor(Math.random()*tokenSet.length)];
-            paths.push(token);
+            keys.push(token);
         }
     });
-    return paths;
+    return keys;
 }
 
-function sayToken(tokens, paths, pos) {
-    var filename = 'convert/' + paths[pos];
+function sayToken(tokens, keys, pos) {
     var sound = new Howl({
-        urls: [filename + '.ogg', filename + '.mp3'],
+        urls: genPath(keys[pos]),
         onplay: function() {
 //            $(tokens[pos]).addClass('talking');
-            if (pos+1 < paths.length) {
-                var filename = 'convert/' + paths[pos];
+            if (pos+1 < keys.length) {
                 var next = new Howl({
-                    urls: [filename + '.ogg', filename + '.mp3'],
+                    urls: genPath(keys[pos+1])
                 }).unload();
             }
         },
         onloaderror: function() {
-            if (pos+1 < paths.length) {
-                sayToken(tokens, paths, pos+1);
+            if (pos+1 < keys.length) {
+                sayToken(tokens, keys, pos+1);
             }
         },
         onend: function() {
-            if (pos+1 < paths.length) {
-                sayToken(tokens, paths, pos+1);
+            if (pos+1 < keys.length) {
+                sayToken(tokens, keys, pos+1);
             } else {
 //                tokens.removeClass('talking');
                 playing = false;
