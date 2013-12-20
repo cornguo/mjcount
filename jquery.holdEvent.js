@@ -27,7 +27,7 @@ $.fn.holdEvent = function(options) {
     var settings = $.extend(
         {
             handler: function() {},
-            time: 1000
+            time: 500
         },
         options),
         element = this;

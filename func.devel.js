@@ -84,29 +84,21 @@ function tokenMake(key) {
 
 function tokenUpdater() {
     return function(elementClicked) {
-        tokenMake(elementClicked.data('token'))
-            .appendTo('#tokens')
+        tokenMake(elementClicked.data('token')).appendTo('#tokens');
     }
 }
 
 $(document).ready(function() {
     renderTags(clips);
-    $('.draggable ul li').draggable({ revert: true });
-    $('.droppable').droppable({
-        drop: function(e, obj) {
-            var key = obj.draggable.data('token');
-            $('#tokens').append(tokenMake(key));
-        }
-    });
     var string = window.location.hash.substr(1);
     if (string.length > 0) {
         var tokens = string.replace(/_/g, ' ').trim().split(' ');
         $(tokens).each(function(i, key) {
             if ('undefined' !== typeof(names[key])) {
-                var token = $('<li data-token="' + key + '">' + names[key] + '</li>').on('click', function() {$(this).remove()});
-                $('#tokens').append(token);
+                $('#tokens').append(tokenMake(key));
             }
         });
+        $('#tokens').sortable();
         sayTokens();
     }
     $('#say').on('click', function() {
