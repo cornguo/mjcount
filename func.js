@@ -71,7 +71,9 @@ function feelLucky() {
         'ji ji ji ji bei bei bei bei',
         'hole 10 hole hole 10 hole 10 hole',
         'wah',
-        'love i de qjs'
+        'love i de qjs',
+        '10 9 8 7 6 5 4 3 2 1 uh 5 bei ec wow',
+        'hhd love you de dx jzlmy'
     ];
     appendTokensByString(sentences[Math.floor(Math.random()*sentences.length)]);
 }
