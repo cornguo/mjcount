@@ -85,7 +85,7 @@ function sayToken(tokens, paths, pos) {
 }
 
 function tokenMake(key) {
-    return $('<li data-token="' + key + '">' + names[key] + '</li>').on('click', function() {$(this).remove()});
+    return $('<li data-token="' + key + '">' + names[key] + '</li>').on('dblclick', function() {$(this).remove()});
 }
 
 function tokenUpdater() {
