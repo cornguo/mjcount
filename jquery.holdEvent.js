@@ -19,7 +19,7 @@ function holdEventDelayedLoop(element, handler, time) {
                     holdClearer(false)
                 );
             },
-            time / 2
+            time
         ),
         holdClearer(true)
     );
