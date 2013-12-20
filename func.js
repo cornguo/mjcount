@@ -40,6 +40,7 @@ function sayTokens() {
     if (true === playing) {
         return;
     }
+    updateHash();
 
     var tokens = $('#tokens button');
     var keys = convertTokToKey(tokens);
@@ -48,6 +49,9 @@ function sayTokens() {
         tokens.removeClass('talking');
         playing = true;
         sayToken(tokens, keys, 0);
+    } else {
+        appendTokensByString('yousee youseesee haveno is you donot nong i jzlmy');
+        sayTokens();
     }
 }
 
@@ -70,6 +74,9 @@ function convertTokToKey(tokens) {
 }
 
 function sayToken(tokens, keys, pos) {
+    if (0 != pos && false == playing) {
+        return;
+    }
     var sound = new Howl({
         urls: genPath(keys[pos]),
         onplay: function() {
@@ -106,14 +113,6 @@ $(document).ready(function() {
         sayTokens();
     }
     $('#say').on('click', function() {
-        var tokens = $('#tokens button');
-        if (tokens.length > 0) {
-            var hash = '';
-            tokens.each(function (i, obj) {
-                hash += $(obj).data('token') + ' ';
-            });
-            window.location.hash = hash.trim().replace(/ /g, '_');
-        }
         sayTokens();
     });
     $('#time').on('click', function() {
@@ -123,6 +122,11 @@ $(document).ready(function() {
     });
     $('#clear').on('click', function() {
         $('#tokens').empty();
+        playing = false;
+    });
+    $('#stop').on('click', function() {
+        playing = false;
+        $('#tokens button').removeClass('talking');
     });
 });
 
@@ -135,6 +139,17 @@ function appendTokensByString(str) {
             }
         });
         $('#tokens').sortable({cancel: ''});
+    }
+}
+
+function updateHash() {
+    var tokens = $('#tokens button');
+    if (tokens.length > 0) {
+        var hash = '';
+        tokens.each(function (i, obj) {
+            hash += $(obj).data('token') + ' ';
+        });
+        window.location.hash = hash.trim().replace(/ /g, '_');
     }
 }
 
