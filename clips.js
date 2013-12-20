@@ -51,7 +51,7 @@ $(document).data('clips', {
     'because'    : ['because'],
     'become'     : ['become'],
     'bei'        : ['bei'],
-    'beside'     : ['beside'],
+    'behind'     : ['behide'],
     'besides'    : ['besides'],
     'bk'         : ['bk'],
     'bless'      : ['bless'],

@@ -51,7 +51,7 @@ $(document).data('names', {
     'because'    : '因為',
     'become'     : '變成',
     'bei'        : '倍',
-    'beside'     : '後面',
+    'behind'     : '後面',
     'besides'    : '再說',
     'bk'         : '補課',
     'bless'      : '祝福',
