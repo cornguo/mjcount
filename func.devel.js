@@ -17,7 +17,6 @@ function renderTags(objs) {
                 });
                 sound.play();
                 tag.holdEvent({ handler: tokenUpdater() });
-                $('#tags').append(tag);
             });
             $('#tags').append(tag);
         }
