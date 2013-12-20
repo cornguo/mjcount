@@ -87,7 +87,7 @@ function getTimeString() {
     } else if (10 == hour) {
         retStr += '10 dian ';
     } else {
-        if (hour - 10 > 1) {
+        if (hour - 10 > 9) {
             retStr += parseInt(hour/10) + ' ';
         }
         retStr += '10 ';
