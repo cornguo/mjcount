@@ -84,9 +84,17 @@ body article h1 {
   color: #000;
   text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5);
 }
+body article div {
+    padding: 10px;
+}
 body article div#buttons {
   padding: 10px;
   border-top: 1px solid #8f8f8f;
+  border-bottom: 1px solid #8f8f8f;
+  padding-bottom: 15px;
+}
+body article div div#tokens {
+  padding: 10px;
   border-bottom: 1px solid #8f8f8f;
   padding-bottom: 15px;
 }
@@ -123,14 +131,6 @@ input[type="submit"]:active {
   box-shadow: inset 0 1px 0 #cccccc, inset 0 2px 0 #c9c9c9, inset 0 3px 0 #bbbbbb, inset 0 4px 0 #b9b9b9, inset 0 5px 0 #aaaaaa, inset 0 6px 1px rgba(0, 0, 0, 0.1), inset 0 0 5px rgba(0, 0, 0, 0.1), inset 0 1px 3px rgba(0, 0, 0, 0.3), inset 0 3px 5px rgba(0, 0, 0, 0.2), inset 0 5px 10px rgba(0, 0, 0, 0.25);
 }
 
-#tokens {
-  line-height: 36px;
-  height: 36px;
-  width: 100%;
-  border-radius: 5px;
-  border: 1px solid #d2d2d2;
-}
-
 form {
   text-align: center;
 }
@@ -144,4 +144,8 @@ input[type="submit"], form button {
 #fb_like {
   float: right;
   width: 100px;
+}
+
+.talking {
+  background-color: #FCC;
 }

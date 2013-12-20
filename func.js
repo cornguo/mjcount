@@ -25,14 +25,14 @@ function renderButtons(objs) {
     });
 }
 
+function tokenMake(key) {
+    return $('<button data-token="' + key + '">' + names[key] + '</button>').on('dblclick', function() {$(this).remove()});
+}
+
 function tokenUpdater() {
     return function(elementClicked) {
-        $('#tokens')
-            .val(function(index, valueCurrent) {
-                return $.trim(valueCurrent
-                    + ' '
-                    + elementClicked.data('token'))
-            });
+        tokenMake(elementClicked.data('token')).appendTo('#tokens');
+        $('#tokens').sortable({cancel: ''});
     }
 }
 
@@ -41,12 +41,13 @@ function sayTokens() {
         return;
     }
 
-    $('#tokens').val($('#tokens').val().replace(/_/g, ' ').replace(/#/, ''));
-    var tokens = $('#tokens').val().trim().split(' ');
+    $('html, body').animate({scrollTop: $(document).height()}, 'slow');
+
+    var tokens = $('#tokens button');
     var keys = convertTokToKey(tokens);
 
     if (keys.length > 0) {
-//        tokens.removeClass('talking');
+        tokens.removeClass('talking');
         playing = true;
         sayToken(tokens, keys, 0);
     }
@@ -59,7 +60,8 @@ function genPath(key) {
 
 function convertTokToKey(tokens) {
     var keys = [];
-    $(tokens).each(function(i, key) {
+    $(tokens).each(function(i, obj) {
+        var key = $(obj).data('token');
         var tokenSet = clips[key];
         if ('undefined' !== typeof(tokenSet)) {
             var token = tokenSet[Math.floor(Math.random()*tokenSet.length)];
@@ -73,7 +75,7 @@ function sayToken(tokens, keys, pos) {
     var sound = new Howl({
         urls: genPath(keys[pos]),
         onplay: function() {
-//            $(tokens[pos]).addClass('talking');
+            $(tokens[pos]).addClass('talking');
             if (pos+1 < keys.length) {
                 var next = new Howl({
                     urls: genPath(keys[pos+1])
@@ -89,7 +91,7 @@ function sayToken(tokens, keys, pos) {
             if (pos+1 < keys.length) {
                 sayToken(tokens, keys, pos+1);
             } else {
-//                tokens.removeClass('talking');
+                tokens.removeClass('talking');
                 playing = false;
             }
             this.unload();
@@ -99,12 +101,40 @@ function sayToken(tokens, keys, pos) {
 
 $(document).ready(function() {
     renderButtons(clips);
-    var string = window.location.hash.substr(1);
-    if (string.length > 0) {
-        $('#tokens').val(string);
+    var str = window.location.hash.substr(1);
+    if (str.length > 0) {
+        appendTokensByString(str);
         sayTokens();
     }
+    $('#say').on('click', function() {
+        var tokens = $('#tokens button');
+        if (tokens.length > 0) {
+            var hash = '';
+            tokens.each(function (i, obj) {
+                hash += $(obj).data('token') + ' ';
+            });
+            window.location.hash = hash.trim().replace(/ /g, '_');
+        }
+        sayTokens();
+    });
+    $('#time').on('click', function() {
+        $('#tokens').empty();
+        appendTokensByString(getTimeString());
+        sayTokens();
+    });
 });
+
+function appendTokensByString(str) {
+    if (str.length > 0) {
+        var tokens = str.replace(/_/g, ' ').trim().split(' ');
+        $(tokens).each(function(i, key) {
+            if ('undefined' !== typeof(names[key])) {
+                $('#tokens').append(tokenMake(key));
+            }
+        });
+        $('#tokens').sortable({cancel: ''});
+    }
+}
 
 function getTimeString() {
     var date = new Date();
