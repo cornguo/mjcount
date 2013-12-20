@@ -202,15 +202,19 @@ function getTimeString() {
 
     if (0 == hour) {
         retStr += '0 dian';
-    }if (2 == hour) {
+    } else if (2 == hour) {
         retStr += '2s dian ';
     } else if (10 == hour) {
         retStr += '10 dian ';
     } else {
-        if (hour - 10 > 9) {
+        if (hour < 10) {
+            retStr += hour % 10 + ' ';
+        } else if (hour > 10) {
+            retStr += '10 '
+        } else if (hour > 19) {
             retStr += parseInt(hour/10) + ' ';
+            retStr += '10 ';
         }
-        retStr += '10 ';
         if (hour > 10 && hour % 10 != 0) {
             retStr += hour % 10 + ' ';
         }
