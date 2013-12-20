@@ -54,7 +54,7 @@ function feelLucky() {
     var sentences = [
         'yousee youseesee haveno is you donot nong i jzlmy',
         'chok',
-        '1 ke 2s ke 3 ke 4 ke total 5 bei ec',
+        '1 ke 2s ke 3 ke 4 ke total 5 bei de ec',
         'sorry i wrong wehaveto love gay friend wow',
         'ldzy czr',
         'uh',
