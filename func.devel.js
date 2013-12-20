@@ -1,5 +1,6 @@
 var clips = $(document).data('clips');
 var names = $(document).data('names');
+var playing = false;
 
 function renderTags(objs) {
     $(Object.keys(objs)).each(function(i, key) {
@@ -26,35 +27,55 @@ function renderTags(objs) {
 }
 
 function sayTokens() {
+    if (true === playing) {
+        return;
+    }
+
     var tokens = $('#tokens li');
-    var sentence = [];
+    var paths = convertTokToPath(tokens);
+
+    if (paths.length > 0) {
+        tokens.removeClass('talking');
+        playing = true;
+        sayToken(tokens, paths, 0);
+    }
+}
+
+function convertTokToPath(tokens) {
+    var paths = [];
     $(tokens).each(function(i, obj) {
         var key = $(obj).data('token');
         var tokenSet = clips[key];
         if ('undefined' !== typeof(tokenSet)) {
             var token = tokenSet[Math.floor(Math.random()*tokenSet.length)];
-            sentence.push(token);
+            paths.push(token);
         }
     });
+    return paths;
+}
 
-    if (sentence.length > 0) {
-        $(sentence).each(function(i, path) {
-            filename = 'convert/' + path;
-            sentence[i] = new Howl({
-                urls: [filename + '.ogg', filename + '.mp3'],
-                onend: function() {
-                    if ((i+1) < sentence.length) {
-                        sentence[i+1].play();
-                    } else {
-                        $(sentence).each(function(i, obj) {
-                            obj.unload();
-                        });
-                    }
-                }
-            });
-        });
-        sentence[0].play();
-    }
+function sayToken(tokens, paths, pos) {
+    var filename = 'convert/' + paths[pos];
+    var sound = new Howl({
+        urls: [filename + '.ogg', filename + '.mp3'],
+        onplay: function() {
+            $(tokens[pos]).addClass('talking');
+        },
+        onloaderror: function() {
+            if (pos+1 < paths.length) {
+                sayToken(tokens, paths, pos+1);
+            }
+        },
+        onend: function() {
+            if (pos+1 < paths.length) {
+                sayToken(tokens, paths, pos+1);
+            } else {
+                tokens.removeClass('talking');
+                playing = false;
+            }
+            this.unload();
+        }
+    }).play();
 }
 
 function tokenMake(key) {
