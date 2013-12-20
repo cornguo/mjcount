@@ -121,6 +121,9 @@ $(document).ready(function() {
         appendTokensByString(getTimeString());
         sayTokens();
     });
+    $('#clear').on('click', function() {
+        $('#tokens').empty();
+    });
 });
 
 function appendTokensByString(str) {
