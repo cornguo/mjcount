@@ -38,7 +38,7 @@ $.fn.holdEvent = function(options) {
                 function() {
                     settings.handler(element);
 
-                    holdEventDelayedLoop(element, settings.handler, settings.time)
+//                    holdEventDelayedLoop(element, settings.handler, settings.time)
                 },
                 settings.time);
         },
