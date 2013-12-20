@@ -41,8 +41,6 @@ function sayTokens() {
         return;
     }
 
-    $('html, body').animate({scrollTop: $(document).height()}, 'slow');
-
     var tokens = $('#tokens button');
     var keys = convertTokToKey(tokens);
 
@@ -76,6 +74,7 @@ function sayToken(tokens, keys, pos) {
         urls: genPath(keys[pos]),
         onplay: function() {
             $(tokens[pos]).addClass('talking');
+            $('html, body').animate({scrollTop: $(tokens[pos]).position().top - 20}, 'slow');
             if (pos+1 < keys.length) {
                 var next = new Howl({
                     urls: genPath(keys[pos+1])
