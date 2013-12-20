@@ -9,10 +9,12 @@ function holdClearer(isTimeout) {
 }
 
 function holdEventDelayedLoop(element, handler, time) {
-    element.mouseup(
+    element.on(
+        'mouseup mouseout',
         setTimeout(
             function() {
-                element.mouseup(
+                element.on(
+                    'mouseup mouseout',
                     setInterval(function() { handler(element); }, time / 10),
                     holdClearer(false)
                 );
@@ -43,7 +45,8 @@ $.fn.holdEvent = function(options) {
                 settings.time);
         },
         function(eventDown) {
-            $(eventDown.target).mouseup(
+            $(eventDown.target).on(
+                'mouseup mouseout',
                 eventDown.data(),
                 holdClearer(true)
             );
