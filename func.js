@@ -1,5 +1,6 @@
 var clips = $(document).data('clips');
 var names = $(document).data('names');
+var sentences = $(document).data('sentences');
 var playing = null;
 
 function renderButtons(objs) {
@@ -51,38 +52,8 @@ function sayTokens() {
 }
 
 function feelLucky() {
-    var sentences = [
-        'yousee youseesee haveno is you donot nong i jzlmy',
-        'chok',
-        '1 ke 2s ke 3 ke 4 ke total 5 bei de ec',
-        'sorry i wrong wehaveto love gay friend wow',
-        'ldzy czr',
-        'uh',
-        'ng already ' + getTimeString() + ' wow bk de classmate qz',
-        'ahy qsj allare friend',
-        'ng cloud ng mist czr',
-        'we love 5 5 6 6',
-        'i de sound very moe i love moe',
-        'youhaveto share i de sound',
-        'i donot dkhj i donot dksl',
-        'qsj de gay allare friend we donot bcjl',
-        'ohno',
-        'ldzy become 1 haha',
-        'ji ji ji ji bei bei bei bei',
-        'hole 10 hole hole 10 hole 10 hole',
-        'wah',
-        'love i de qjs',
-        '10 9 8 7 6 5 4 3 2 1 uh 5 bei ec wow',
-        'hhd love you de dx jzlmy',
-        'i love ke ke ke',
-        'i de sound czr',
-        'momo i de thb',
-        'you is i de jie mei you is i de bei bei',
-        '+13 +11 +05 +11 +12 +15 +00 +00 +12 +13 +12 +05 +11',
-        '+11 +11 +12 +13 +14 +15 +15 +15 +15 +14 +13 +15 +15 +15 +15 +16 +17 +21 +00 +13 +13 +16 +15',
-        '+21 +17 +21 +17 +21 +15 +16+ +15+ +14'
-    ];
-    appendTokensByString(sentences[Math.floor(Math.random()*sentences.length)]);
+    var sentence = sentences[Math.floor(Math.random()*sentences.length)];
+    appendTokensByString(sentence);
 }
 
 function genPath(key) {
@@ -177,6 +148,10 @@ function appendTokensByString(str) {
     if (str.length > 0) {
         var tokens = str.replace(/_/g, ' ').trim().split(' ');
         $(tokens).each(function(i, key) {
+            if ("[TIME]" === key) {
+                var timeString = getTimeString();
+                appendTokensByString(timeString);
+            }
             if ('undefined' !== typeof(names[key])) {
                 $('#tokens').append(tokenMake(key));
             }
