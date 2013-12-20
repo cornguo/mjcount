@@ -1,6 +1,6 @@
 var clips = $(document).data('clips');
 var names = $(document).data('names');
-var playing = false;
+var playing = null;
 
 function renderButtons(objs) {
     $(Object.keys(objs)).each(function(i, key) {
@@ -37,20 +37,16 @@ function tokenUpdater() {
 }
 
 function sayTokens() {
-    if (true === playing) {
-        return;
-    }
+    stopPlaying();
     updateHash();
 
     var tokens = $('#tokens button');
-    var keys = convertTokToKey(tokens);
 
-    if (keys.length > 0) {
+    if (tokens.length > 0) {
         tokens.removeClass('talking');
-        playing = true;
-        sayToken(tokens, keys, 0);
+        sayToken(tokens);
     } else {
-        feelLucky();
+        $('#lucky').click();
     }
 }
 
@@ -70,7 +66,6 @@ function feelLucky() {
         'youhaveto share i de sound'
     ];
     appendTokensByString(sentences[Math.floor(Math.random()*sentences.length)]);
-    sayTokens();
 }
 
 function genPath(key) {
@@ -78,49 +73,44 @@ function genPath(key) {
     return [filename + '.ogg', filename + '.mp3'];
 }
 
-function convertTokToKey(tokens) {
-    var keys = [];
-    $(tokens).each(function(i, obj) {
-        var key = $(obj).data('token');
-        var tokenSet = clips[key];
-        if ('undefined' !== typeof(tokenSet)) {
-            var token = tokenSet[Math.floor(Math.random()*tokenSet.length)];
-            keys.push(token);
-        }
-    });
-    return keys;
+function convertTokToKey(key) {
+    var tokenSet = clips[key];
+    if ('undefined' !== typeof(tokenSet)) {
+        return tokenSet[Math.floor(Math.random()*tokenSet.length)];
+    }
+    return null;
 }
 
-function sayToken(tokens, keys, pos) {
-    if (0 != pos && false == playing) {
+function sayToken(tokens) {
+    var tokQue = tokens.not('.talking');
+
+    if (0 === tokQue.length) {
         return;
     }
-    var sound = new Howl({
-        urls: genPath(keys[pos]),
+
+    var currentTok = tokQue.first();
+
+    playing = new Howl({
+        urls: genPath(convertTokToKey(currentTok.data('token'))),
         onplay: function() {
-            $(tokens[pos]).addClass('talking');
-            $('html, body').animate({scrollTop: $(tokens[pos]).position().top - 20}, 'fast');
-            if (pos+1 < keys.length) {
-                var next = new Howl({
-                    urls: genPath(keys[pos+1])
-                }).unload();
-            }
+            currentTok.addClass('talking');
+            $('html, body').animate({scrollTop: currentTok.position().top - 100}, 'fast');
         },
         onloaderror: function() {
-            if (pos+1 < keys.length) {
-                sayToken(tokens, keys, pos+1);
-            }
+            this.stop();
+            this.unload();
         },
         onend: function() {
-            if (pos+1 < keys.length) {
-                sayToken(tokens, keys, pos+1);
+            if (tokQue.length > 1) {
+                sayToken(tokens);
             } else {
+                playing = null;
                 tokens.removeClass('talking');
-                playing = false;
             }
             this.unload();
         }
-    }).play();
+    });
+    playing.play();
 }
 
 $(document).ready(function() {
@@ -135,24 +125,35 @@ $(document).ready(function() {
     });
     $('#time').on('click', function() {
         $('#tokens').empty();
-        playing = false;
         appendTokensByString(getTimeString());
         sayTokens();
     });
     $('#clear').on('click', function() {
         $('#tokens').empty();
-        playing = false;
+        stopPlaying();
     });
     $('#stop').on('click', function() {
-        playing = false;
+        stopPlaying();
         $('#tokens button').removeClass('talking');
     });
     $('#lucky').on('click', function() {
         $('#tokens').empty();
-        playing = false;
         feelLucky();
+        sayTokens();
+    });
+    $('#getlink').on('click', function() {
+        return prompt('分享連結', getLink());
     });
 });
+
+function stopPlaying() {
+    if (null !== playing) {
+        playing.stop();
+        playing.unload();
+    }
+    playing = null;
+    setTimeout(function() {}, 1000);
+}
 
 function appendTokensByString(str) {
     if (str.length > 0) {
@@ -216,4 +217,9 @@ function getTimeString() {
     retStr += 'fen';
 
     return retStr;
+}
+
+function getLink() {
+    updateHash();
+    return window.location;
 }
