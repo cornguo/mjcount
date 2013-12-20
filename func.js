@@ -74,7 +74,7 @@ function sayToken(tokens, keys, pos) {
         urls: genPath(keys[pos]),
         onplay: function() {
             $(tokens[pos]).addClass('talking');
-            $('html, body').animate({scrollTop: $(tokens[pos]).position().top - 20}, 'slow');
+            $('html, body').animate({scrollTop: $(tokens[pos]).position().top - 20}, 'fast');
             if (pos+1 < keys.length) {
                 var next = new Howl({
                     urls: genPath(keys[pos+1])
