@@ -71,6 +71,12 @@ function sayToken(tokens, paths, pos) {
         urls: [filename + '.ogg', filename + '.mp3'],
         onplay: function() {
 //            $(tokens[pos]).addClass('talking');
+            if (pos+1 < paths.length) {
+                var filename = 'convert/' + paths[pos];
+                var next = new Howl({
+                    urls: [filename + '.ogg', filename + '.mp3'],
+                }).unload();
+            }
         },
         onloaderror: function() {
             if (pos+1 < paths.length) {
