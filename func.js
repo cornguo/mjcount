@@ -135,7 +135,9 @@ $(document).ready(function() {
     var str = window.location.hash.substr(1);
     if (str.length > 0) {
         appendTokensByString(str);
-        sayTokens();
+        setTimeout(function() {
+            sayTokens();
+        }, 1000);
     }
     $('#say').on('click', function() {
         sayTokens();
@@ -169,7 +171,6 @@ function stopPlaying() {
         playing.unload();
     }
     playing = null;
-    setTimeout(function() {}, 1000);
 }
 
 function appendTokensByString(str) {
