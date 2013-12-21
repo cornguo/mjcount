@@ -95,7 +95,7 @@ body article div.container {
 body article div#buttons {
   padding: 10px;
   padding-bottom: 15px;
-  height: 40em;
+  height: 34em;
   overflow-y: scroll;
   overflow-x: hidden;
 }
