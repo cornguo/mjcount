@@ -83,7 +83,10 @@ function sayToken(tokens) {
         urls: genPath(convertTokToKey(currentTok.data('token'))),
         onplay: function() {
             currentTok.addClass('talking');
-            $('html, body').animate({scrollTop: currentTok.position().top - 100}, 'fast');
+            var pos = currentTok.position().top - $('#tokens').position().top - 10;
+            if (pos > 0) {
+                $('#tokens').animate({scrollTop: $('#tokens').scrollTop() + pos}, 'fast');
+            }
         },
         onloaderror: function() {
             this.stop();
@@ -148,6 +151,7 @@ function stopPlaying() {
         playing.stop();
         playing.unload();
     }
+    $('#tokens').animate({scrollTop: 0}, 'fast');
     playing = null;
 }
 

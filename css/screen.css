@@ -69,11 +69,12 @@ body {
   color: #3c3c3c;
 }
 body article {
-  width: 70%;
+  width: 75%;
   height: auto;
   margin: auto;
   margin-top: 3%;
   margin-bottom: 3%;
+  margin-right: 14em;
   padding: 3%;
   border-radius: 15px;
   background: rgba(202, 221, 228, 0.8);
@@ -95,13 +96,16 @@ body article div.container {
 body article div#buttons {
   padding: 10px;
   padding-bottom: 15px;
-  height: 34em;
+  height: 30em;
   overflow-y: scroll;
   overflow-x: hidden;
 }
 body article div div#tokens {
   padding: 10px;
   padding-bottom: 15px;
+  height: 8em;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 body article div form {
   line-height: 36px;
@@ -156,11 +160,14 @@ input[type="submit"], form button {
 }
 
 #control {
-  width: 14em;
+  width: 9em;
   position: fixed;
   bottom: 10px;
   right: 10px;
-  text-align:right;
+  padding: 10px;
+  text-align: center;
+  border-radius: 15px;
+  background: rgba(202, 221, 228, 0.8);
 }
 
 #control button {
