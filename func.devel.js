@@ -29,13 +29,16 @@ function sayTokens() {
         return;
     }
 
-    var tokens = $('#tokens li');
-    var keys = convertTokToKey(tokens);
+    var tokens1 = $('#tokens1 li');
+    var keys1 = convertTokToKey(tokens1);
+    var tokens2 = $('#tokens2 li');
+    var keys2 = convertTokToKey(tokens2);
 
-    if (keys.length > 0) {
-        tokens.removeClass('talking');
+    if (keys1.length > 0 || keys2.length > 0) {
+        $('.talking').removeClass('talking');
         playing = true;
-        sayToken(tokens, keys, 0);
+        sayToken(tokens1, keys1, 0);
+        sayToken(tokens2, keys2, 0);
     }
 }
 
@@ -58,6 +61,9 @@ function convertTokToKey(tokens) {
 }
 
 function sayToken(tokens, keys, pos) {
+    if (0 === tokens.length) {
+        return;
+    }
     var sound = new Howl({
         urls: genPath(keys[pos]),
         onplay: function() {
@@ -91,7 +97,9 @@ function tokenMake(key) {
 
 function tokenUpdater() {
     return function(elementClicked) {
-        tokenMake(elementClicked.data('token')).appendTo('#tokens').sortable();
+        var obj = $('#tokens' + $('input[name=zone]:checked').val());
+        tokenMake(elementClicked.data('token')).appendTo(obj);
+        obj.sortable();
     }
 }
 
@@ -99,24 +107,37 @@ $(document).ready(function() {
     renderTags(clips);
     var string = window.location.hash.substr(1);
     if (string.length > 0) {
-        var tokens = string.replace(/_/g, ' ').trim().split(' ');
-        $(tokens).each(function(i, key) {
-            if ('undefined' !== typeof(names[key])) {
-                $('#tokens').append(tokenMake(key));
-            }
+        var parts = string.replace(/_/g, ' ').trim().split('|');
+        $(parts).each(function(n, k) {
+            var tokens = k.split(' ');
+            $(tokens).each(function(i, key) {
+                if ('undefined' !== typeof(names[key])) {
+                    $('#tokens' + (n+1)).append(tokenMake(key));
+                }
+            });
         });
-        $('#tokens').sortable();
+        $('#tokens1').sortable();
+        $('#tokens2').sortable();
         sayTokens();
     }
     $('#say').on('click', function() {
-        var tokens = $('#tokens li');
-        if (tokens.length > 0) {
+        var tokens1 = $('#tokens1 li');
+        if (tokens1.length > 0) {
             var hash = '';
-            tokens.each(function (i, obj) {
+            tokens1.each(function (i, obj) {
                 hash += $(obj).data('token') + ' ';
             });
             window.location.hash = hash.trim().replace(/ /g, '_');
         }
+        var tokens2 = $('#tokens2 li');
+        if (tokens2.length > 0) {
+            var hash = '';
+            tokens2.each(function (i, obj) {
+                hash += $(obj).data('token') + ' ';
+            });
+            window.location.hash += '|' + hash.trim().replace(/ /g, '_');
+        }
+
         sayTokens();
     });
 });
