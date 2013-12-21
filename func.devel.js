@@ -73,6 +73,16 @@ function sayToken(tokens, keys, pos) {
                     urls: genPath(keys[pos+1]),
                 }).unload();
             }
+            if ('+' === keys[pos][0]) {
+                setTimeout(function() {
+                    if (pos+1 < keys.length) {
+                        sayToken(tokens, keys, pos+1);
+                    } else {
+                        tokens.removeClass('talking');
+                        playing = false;
+                    }
+                }, 250);
+            }
         },
         onloaderror: function() {
             if (pos+1 < keys.length) {
@@ -80,11 +90,13 @@ function sayToken(tokens, keys, pos) {
             }
         },
         onend: function() {
-            if (pos+1 < keys.length) {
-                sayToken(tokens, keys, pos+1);
-            } else {
-                tokens.removeClass('talking');
-                playing = false;
+            if ('+' !== keys[pos][0]) {
+                if (pos+1 < keys.length) {
+                    sayToken(tokens, keys, pos+1);
+                } else {
+                    tokens.removeClass('talking');
+                    playing = false;
+                }
             }
             this.unload();
         }
