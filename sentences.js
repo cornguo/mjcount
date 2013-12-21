@@ -38,6 +38,7 @@ $(document).data('sentences', [
     'wah',
     'we love 5 5 6 6',
     'why i haveno dx',
+    'you besides burn',
     'you is i de jie mei +00 you is i de bei bei',
     'youhaveto share i de sound',
     'yousee youseesee haveno is you donot nong i jzlmy',
