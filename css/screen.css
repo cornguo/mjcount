@@ -95,6 +95,9 @@ body article div.container {
 body article div#buttons {
   padding: 10px;
   padding-bottom: 15px;
+  height: 40em;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 body article div div#tokens {
   padding: 10px;
