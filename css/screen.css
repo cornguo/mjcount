@@ -160,7 +160,7 @@ input[type="submit"], form button {
 }
 
 #control {
-  width: 9em;
+  width: 10em;
   position: fixed;
   bottom: 10px;
   right: 10px;
