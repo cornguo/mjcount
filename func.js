@@ -158,8 +158,13 @@ function stopPlaying() {
         playing.stop();
         playing.unload();
     }
+    if (null !== previous) {
+        previous.stop();
+        previous.unload();
+    }
     $('#tokens').animate({scrollTop: 0}, 'fast');
     playing = null;
+    previous = null;
 }
 
 function appendTokensByString(str) {
