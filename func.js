@@ -2,6 +2,7 @@ var clips = $(document).data('clips');
 var names = $(document).data('names');
 var sentences = $(document).data('sentences');
 var playing = null;
+var previous = null;
 
 function renderButtons(objs) {
     $(Object.keys(objs)).each(function(i, key) {
@@ -97,9 +98,15 @@ function sayToken(tokens) {
                 sayToken(tokens);
             } else {
                 playing = null;
+                this.unload();
+                previous.unload();
+                previous = null;
                 tokens.removeClass('talking');
             }
-            this.unload();
+            if (null !== previous) {
+                previous.unload();
+            }
+            previous = this;
         }
     });
     playing.play();
