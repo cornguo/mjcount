@@ -37,6 +37,7 @@ $(document).data('clips', {
     '+16+'       : ['+16+'],
     '+17'        : ['+17'],
     '+21'        : ['+21'],
+    'ah'         : ['ah'],
     'ahy'        : ['ahy'],
     'allare'     : ['allare-1', 'allare-2'],
     'already'    : ['already'],
