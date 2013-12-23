@@ -94,20 +94,18 @@ function sayToken(tokens) {
             this.unload();
         },
         onend: function() {
-            if (tokQue.length > 1) {
-                sayToken(tokens);
-            } else {
-                playing = null;
-                this.unload();
-                previous.unload();
-                previous = null;
-                tokens.removeClass('talking');
-            }
             if (null !== previous) {
                 previous.unload();
                 previous = null;
             }
-            previous = this;
+            if (tokQue.length > 1) {
+                previous = this;
+                sayToken(tokens);
+            } else {
+                playing = null;
+                this.unload();
+                tokens.removeClass('talking');
+            }
         }
     });
     playing.play();
