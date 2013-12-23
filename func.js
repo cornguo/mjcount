@@ -105,6 +105,7 @@ function sayToken(tokens) {
             }
             if (null !== previous) {
                 previous.unload();
+                previous = null;
             }
             previous = this;
         }
@@ -157,10 +158,6 @@ function stopPlaying() {
     if (null !== playing) {
         playing.stop();
         playing.unload();
-    }
-    if (null !== previous) {
-        previous.stop();
-        previous.unload();
     }
     $('#tokens').animate({scrollTop: 0}, 'fast');
     playing = null;
