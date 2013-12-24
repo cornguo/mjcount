@@ -61,12 +61,19 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 .clear {
   clear: both;
 }
-
+a {
+  color: #fff;
+}
+a:hover {
+  color: #fff;
+}
 body {
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  background: black url(../imgs/robots.png) 110% 40% no-repeat;
+  background: #fff url(../imgs/robots.png) 0% 100% no-repeat;
+  min-height: 100%;
   font-size: 13px;
-  color: #3c3c3c;
+  color: #fff;
+  text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5);
 }
 body article {
   width: 75%;
@@ -75,23 +82,34 @@ body article {
   margin-top: 2%;
   margin-bottom: 2%;
   margin-right: 14em;
-  padding: 3%;
-  border-radius: 15px;
-  background: rgba(202, 221, 228, 0.8);
+  padding: 1%;
+  border-radius: 5px;
+  background: url(../imgs/ios7-style-retina-wallpaper.jpg) 0 0 no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  opacity: 0.8;
 }
 body article h1 {
   line-height: 40px;
   font-size: 36px;
   margin-bottom: 20px;
-  color: #000;
+  color: #fff;
   text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5);
 }
 body article div {
   padding: 10px;
+  line-height: 24px;
 }
 body article div.container {
-  border-top: 1px solid #8f8f8f;
-  border-bottom: 1px solid #8f8f8f;
+  border-bottom: 1px solid #ccc;
+  line-height: 24px;
+}
+body article div.container span {
+  line-height: 36px;
+  color: #fff;
 }
 body article div#buttons {
   padding: 10px;
@@ -117,27 +135,28 @@ input[type="submit"] {
   padding: 0px 9px;
   height: 32px;
   border: 0;
-  margin: 1%;
-  color: #302d28;
+  margin: 0.5%;
+  color: #000;
   font-size: 15px;
   line-height: 30px;
   border-radius: 5px;
-  box-shadow: 0 1px 0 #cccccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbbbbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaaaaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 20px 20px rgba(0, 0, 0, 0.15);
   background: #f1f1f1;
+  box-shadow: 2px 2px 1px rgba(0,0,0,0.2);
+  cursor: pointer;
 }
 button:hover,
 input[type="submit"]:hover {
-  background: #fff;
-  color: #0090ff;
+  background: #f1f1f1;
+  color: #000;
 }
 button:active,
 input[type="submit"]:active {
-  background: #363636;
-  color: #b4f9ff;
+  background: #fff;
+  color: #000;
   height: 32px;
   position: relative;
   top: 3px;
-  box-shadow: inset 0 1px 0 #cccccc, inset 0 2px 0 #c9c9c9, inset 0 3px 0 #bbbbbb, inset 0 4px 0 #b9b9b9, inset 0 5px 0 #aaaaaa, inset 0 6px 1px rgba(0, 0, 0, 0.1), inset 0 0 5px rgba(0, 0, 0, 0.1), inset 0 1px 3px rgba(0, 0, 0, 0.3), inset 0 3px 5px rgba(0, 0, 0, 0.2), inset 0 5px 10px rgba(0, 0, 0, 0.25);
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.5);
 }
 
 form {
