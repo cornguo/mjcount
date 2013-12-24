@@ -17,6 +17,7 @@ time, mark, audio, video {
   font: inherit;
   font-size: 100%;
   vertical-align: baseline;
+  font-family: 'iLiHei', 'LiHei Pro', 'WenQuanYi Micro Hei', 'Microsoft JhengHei', 'Arial Unicode MS';
 }
 
 html {
@@ -114,7 +115,7 @@ body article div.container span {
 body article div#buttons {
   padding: 10px;
   padding-bottom: 15px;
-  height: 30em;
+  height: 29.5em;
   overflow-y: scroll;
   overflow-x: hidden;
 }
