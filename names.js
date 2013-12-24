@@ -108,6 +108,7 @@ $(document).data('names', {
     'jc'         : '接觸',
     'jg'         : '結果',
     'ji'         : '機',
+    'jiu'        : '就',
     'jie'        : '姊',
     'jzlmy'      : '記住了沒有',
     'kd'         : '砍斷',

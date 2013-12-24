@@ -108,6 +108,7 @@ $(document).data('clips', {
     'jc'         : ['jc'],
     'jg'         : ['jg'],
     'ji'         : ['ji'],
+    'jiu'        : ['jiu'],
     'jie'        : ['jie'],
     'jzlmy'      : ['jzlmy'],
     'kd'         : ['kd'],
