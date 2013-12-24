@@ -126,6 +126,10 @@ body article div div#tokens {
   overflow-y: scroll;
   overflow-x: hidden;
 }
+body article div div#tokens button {
+  position: relative;
+  top: 3px;
+}
 body article div form {
   line-height: 36px;
   margin-top: 1%;
