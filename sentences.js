@@ -15,6 +15,7 @@ $(document).data('sentences', [
     'ahy haveno dx',
     'ahy qsj allare friend',
     'ay wjjphqk wah 4 0 3 yrbdz haha',
+    'chok lf you sick le +00 eout +00 rightnow wow',
     'chok',
     'hhd love you de dx jzlmy',
     'hole 10 hole hole 10 hole 10 hole',
