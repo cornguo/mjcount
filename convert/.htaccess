@@ -1,3 +1,5 @@
-<FilesMatch "\.(ogg|mp3)$">
-ExpiresDefault A172800
-</FilesMatch>
+<IfModule mod_expires>
+    <FilesMatch "\.(ogg|mp3)$">
+        ExpiresDefault A172800
+    </FilesMatch>
+</IfModule>
