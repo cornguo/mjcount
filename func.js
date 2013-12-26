@@ -26,7 +26,6 @@ function renderButtons(objs) {
             button.holdEvent({handler: tokenUpdater(), time: 600});
             if (0 === $('#buttons div[data-category="' + categories[key] + '"]').length) {
                 var div = $('<div data-category="' + categories[key] + '"><h2>' + categories[key] + '</h2></div>');
-                console.log('div ' + categories[key] + ' created');
                 $('#buttons').append(div);
             }
             $('#buttons div[data-category="' + categories[key] + '"]').append(button);
