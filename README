@@ -8,3 +8,5 @@ Live site can be found below:
 - http://cornguo.atcity.org/test/mjcount
 - http://cdn.cornguo.net/mjcount
 - http://cornguo.github.io/mjcount
+
+After pulling this repo, please run convert/convert.sh to convert audio clips for on-line use.
