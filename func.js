@@ -1,6 +1,7 @@
 var clips = $(document).data('clips');
 var names = $(document).data('names');
 var sentences = $(document).data('sentences');
+var categories = $(document).data('categories');
 var playing = null;
 var previous = null;
 
@@ -23,7 +24,12 @@ function renderButtons(objs) {
                 return false;
             })
             button.holdEvent({handler: tokenUpdater(), time: 600});
-            $('#buttons').append(button);
+            if (0 === $('#buttons div[data-category="' + categories[key] + '"]').length) {
+                var div = $('<div data-category="' + categories[key] + '"><h2>' + categories[key] + '</h2></div>');
+                console.log('div ' + categories[key] + ' created');
+                $('#buttons').append(div);
+            }
+            $('#buttons div[data-category="' + categories[key] + '"]').append(button);
         }
     });
 }

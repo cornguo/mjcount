@@ -197,3 +197,7 @@ input[type="submit"], form button {
 #control button {
   margin: 6px 2px;
 }
+
+#buttons div h2 {
+  font-size: 125%;
+}
