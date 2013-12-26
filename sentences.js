@@ -42,4 +42,5 @@ $(document).data('sentences', [
     'you is i de jie mei +00 you is i de bei bei',
     'youhaveto share i de sound',
     'yousee youseesee haveno is you donot nong i jzlmy',
+    'zhe is sheme ws',
 ]);
