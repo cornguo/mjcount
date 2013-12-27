@@ -10,7 +10,7 @@ else
 fi
 # check if ffmpeg eixsts
 ffmpegBin=`which ffmpeg &>/dev/null`
-if [ -f $ffmpegBin ];
+if [ ! -f $ffmpegBin ];
 then
     echo "ffmpeg not found";
     exit 2;
