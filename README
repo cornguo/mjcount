@@ -1,11 +1,13 @@
 Err, just for fun
 
-howler.js is included, you can get it via git submodule
-For more info about howler.js please visit http://goldfirestudios.com/blog/104/howler.js-Modern-Web-Audio-Javascript-Library
+Requirement:
+- howler.js : https://github.com/goldfire/howler.js
+- ffmpeg : http://www.ffmpeg.org
+
+Simply run install.sh to install it if you're using Linux or FreeBSD
 
 Live demo can be found below:
 - http://cornguo.atcity.org/test/mjcount
 - http://cdn.cornguo.net/mjcount
 - http://cornguo.github.io/mjcount
 
-Please run convert/convert.sh to convert audio clips for on-line usage
