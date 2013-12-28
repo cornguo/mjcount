@@ -139,7 +139,7 @@ $(document).data('names', {
     'momo'       : '摸摸',
     'month'      : '月',
     'ng'         : '那個',
-    'nnlynjpnl'  : '你哪裡癢你就拍那裡',
+    'nnlynjanl'  : '你哪裡癢你就按那裡',
     'nohole'     : '沒有洞啊',
     'nong'       : '弄',
     'notbe'      : '不會',

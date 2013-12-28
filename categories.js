@@ -139,7 +139,7 @@ $(document).data('categories', {
     'momo'       : '動詞',
     'month'      : '量詞',
     'ng'         : '助詞',
-    'nnlynjpnl'  : '片語',
+    'nnlynjanl'  : '片語',
     'nohole'     : '片語',
     'nong'       : '動詞',
     'notbe'      : '副詞',

@@ -139,7 +139,7 @@ $(document).data('clips', {
     'momo'       : ['momo'],
     'month'      : ['month'],
     'ng'         : ['ng-1', 'ng-2'],
-    'nnlynjpnl'  : ['nnlynjpnl'],
+    'nnlynjanl'  : ['nnlynjanl'],
     'nohole'     : ['nohole'],
     'nong'       : ['nong'],
     'notbe'      : ['notbe'],
