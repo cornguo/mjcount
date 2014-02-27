@@ -159,8 +159,12 @@ $(document).ready(function() {
 
 function stopPlaying() {
     if (null !== playing) {
-        playing.stop();
-        playing.unload();
+        try {
+            playing.stop();
+            playing.unload();
+        } catch (e) {
+            playing = null;
+        }
     }
     $('#tokens').animate({scrollTop: 0}, 'fast');
     playing = null;
