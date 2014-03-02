@@ -123,6 +123,7 @@ $(document).ready(function() {
         appendTokensByString(str);
         setTimeout(function() {
             sayTokens();
+            $('#fb_like iframe:first').attr('src', $('#fb_like iframe:first').data('src'));
         }, 1000);
     }
     $('#say').on('click', function() {
@@ -154,7 +155,6 @@ $(document).ready(function() {
     $('#getlink').on('click', function() {
         return prompt('分享連結', getLink());
     });
-    $('#fb_like iframe:first').attr('src', $('#fb_like iframe:first').data('src'));
     return false;
 });
 
