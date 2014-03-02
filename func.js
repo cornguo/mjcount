@@ -123,9 +123,11 @@ $(document).ready(function() {
         appendTokensByString(str);
         setTimeout(function() {
             sayTokens();
-            $('#fb_like iframe:first').attr('src', $('#fb_like iframe:first').data('src'));
         }, 1000);
     }
+    setTimeout(function() {
+        $('#fb_like iframe:first').attr('src', $('#fb_like iframe:first').data('src'));
+    }, 1000);
     $('#say').on('click', function() {
         sayTokens();
         return false;
