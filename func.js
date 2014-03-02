@@ -154,6 +154,7 @@ $(document).ready(function() {
     $('#getlink').on('click', function() {
         return prompt('分享連結', getLink());
     });
+    $('#fb_like iframe:first').attr('src', $('#fb_like iframe:first').data('src'));
     return false;
 });
 
