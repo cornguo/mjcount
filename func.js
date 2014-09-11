@@ -138,6 +138,12 @@ $(document).ready(function() {
         sayTokens();
         return false;
     });
+    $('#ip').on('click', function() {
+        $('#tokens').empty();
+        appendTokensByString(getIPString());
+        sayTokens();
+        return false;
+    });
     $('#clear').on('click', function() {
         $('#tokens').empty();
         stopPlaying();
@@ -179,8 +185,10 @@ function appendTokensByString(str) {
         var tokens = str.replace(/_/g, ' ').trim().split(' ');
         $(tokens).each(function(i, key) {
             if ("[TIME]" === key) {
-                var timeString = getTimeString();
-                appendTokensByString(timeString);
+                appendTokensByString(getTimeString());
+            }
+            if ("[IP]" === key) {
+                appendTokensByString(getIPString());
             }
             if ('undefined' !== typeof(names[key])) {
                 $('#tokens').append(tokenMake(key));
@@ -212,6 +220,19 @@ function getTimeString() {
     } else {
         return convertNumToTok(hour) + ' dian ' + convertNumToTok(minute) + ' fen';
     }
+}
+
+function getIPString() {
+    var ip = client_ip;
+    var retStr = '';
+    for (var pos = 0; pos < ip.length; pos++) {
+        if('.' == ip[pos]) {
+            retStr += ' dian';
+        } else {
+            retStr += ' ' + ip[pos];
+        }
+    }
+    return retStr;
 }
 
 function convertNumToTok(num) {
