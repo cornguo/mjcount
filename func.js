@@ -197,6 +197,11 @@ function appendTokensByString(str) {
             if ("[IP]" === key) {
                 appendTokensByString(getIPString());
             }
+            if (key.match(/^\[FBLIKE/)) {
+                url = key.match(/^\[FBLIKE=(.*)\]/);
+                stopPlaying();
+                speakFacebookLikeCount(url[1]);
+            }
             if ('undefined' !== typeof(names[key])) {
                 $('#tokens').append(tokenMake(key));
             }
