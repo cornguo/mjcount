@@ -4,6 +4,7 @@ var sentences = $(document).data('sentences');
 var categories = $(document).data('categories');
 var playing = null;
 var previous = null;
+var interval = null;
 
 function renderButtons(objs) {
     $(Object.keys(objs)).each(function(i, key) {
@@ -146,7 +147,8 @@ $(document).ready(function() {
     });
     $('#like').on('click', function() {
         $('#tokens').empty();
-        getFacebookLikeString();
+        var url = prompt('URL? (cancel for stop looping)', 'https://www.facebook.com/IsShow/');
+        speakFacebookLikeCount(url);
         return false;
     });
     $('#clear').on('click', function() {
@@ -279,8 +281,7 @@ function fetchLikeCount(url) {
             }
         }).then(function(res){
             try {
-                var count = res[0].like_count;
-                defer.resolve(count);
+                defer.resolve(res[0].like_count);
             } catch(e) {
                 reject();
             }
@@ -291,14 +292,29 @@ function fetchLikeCount(url) {
     }).promise();
 }
 
-function getFacebookLikeString() {
-    var url = prompt('URL?', 'https://www.facebook.com/IsShow/');
-
-    if (url) {
+function speakFacebookLikeCount(url) {
+    var callback = function () {
+        // dirty way for cleaning input text
+        stopPlaying();
+        url = $('<div>' + url + '<div>').text();
         fetchLikeCount(url).always(function (count) {
             $('#tokens').empty();
+            $('#tokens').append('<div>Facebook like count of [' + url + ']</div>');
             appendTokensByString(count.toString().replace(/\B(?=(\d){1})/g, " "));
             sayTokens();
-        });
+        })
+    };
+
+    // stops interval that has been set
+    if (null !== interval) {
+        clearInterval(interval);
+    }
+
+    if (url) {
+        $('#like').addClass('talking');
+        callback();
+        interval = setInterval(callback, 3000);
+    } else {
+        $('#like').removeClass('talking');
     }
 }
