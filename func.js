@@ -144,6 +144,11 @@ $(document).ready(function() {
         sayTokens();
         return false;
     });
+    $('#like').on('click', function() {
+        $('#tokens').empty();
+        getFacebookLikeString();
+        return false;
+    });
     $('#clear').on('click', function() {
         $('#tokens').empty();
         stopPlaying();
@@ -260,4 +265,40 @@ function convertNumToTok(num) {
 function getLink() {
     updateHash();
     return window.location;
+}
+
+// from http://jsfiddle.net/Takazudo/RHnzM/
+function fetchLikeCount(url) {
+    return $.Deferred(function(defer){
+        $.ajax({
+            dataType: 'jsonp',
+            url: 'https://api.facebook.com/method/fql.query?callback=callback',
+            data: {
+                query: 'SELECT like_count FROM link_stat WHERE url="' + url + '"',
+                format: 'JSON'
+            }
+        }).then(function(res){
+            try {
+                var count = res[0].like_count;
+                defer.resolve(count);
+            } catch(e) {
+                reject();
+            }
+        }, reject);
+        function reject(){
+            defer.reject(';(');
+        };
+    }).promise();
+}
+
+function getFacebookLikeString() {
+    var url = prompt('URL?', 'https://www.facebook.com/IsShow/');
+
+    if (url) {
+        fetchLikeCount(url).always(function (count) {
+            $('#tokens').empty();
+            appendTokensByString(count.toString().replace(/\B(?=(\d){1})/g, " "));
+            sayTokens();
+        });
+    }
 }
