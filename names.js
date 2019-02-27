@@ -241,7 +241,7 @@ $(document).data('names', {
     'd_iamho'    : '我是何老師',
     'd_serious'  : '真的有這麼嚴重嗎',
     'd_sorry'    : '歹勢歹勢',
-    'd_nowork'   : '對我們家底迪是不是沒有效',
+    'd_notwork'  : '對我們家底迪是不是沒有效',
     'd_nopanic'  : '不要緊張',
     'd_zxcy'     : '我們念這個要真心誠意啊',
     'd_irecord'  : '我有錄起來喔',

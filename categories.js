@@ -241,7 +241,7 @@ $(document).data('categories', {
     'd_iamho'    : '還願',
     'd_serious'  : '還願',
     'd_sorry'    : '還願',
-    'd_nowork'   : '還願',
+    'd_notwork'  : '還願',
     'd_nopanic'  : '還願',
     'd_zxcy'     : '還願',
     'd_irecord'  : '還願',

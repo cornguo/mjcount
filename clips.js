@@ -241,7 +241,7 @@ $(document).data('clips', {
     'd_iamho'    : ['devotion/iamho'],
     'd_serious'  : ['devotion/serious'],
     'd_sorry'    : ['devotion/sorry'],
-    'd_nowork'   : ['devotion/nowork'],
+    'd_notwork'  : ['devotion/notwork'],
     'd_nopanic'  : ['devotion/nopanic'],
     'd_zxcy'     : ['devotion/zxcy'],
     'd_irecord'  : ['devotion/irecord'],
