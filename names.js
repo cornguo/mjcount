@@ -245,7 +245,7 @@ $(document).data('names', {
     'd_nopanic'  : '不要緊張',
     'd_zxcy'     : '我們念這個要真心誠意啊',
     'd_irecord'  : '我有錄起來喔',
-    'd_xczl'     : '心誠則靈'
+    'd_xczl'     : '心誠則靈',
     'd_ringing'  : '(接通聲)',
     'd_qzdr'     : '輕者當日',
     'd_zzqr'     : '重者七日',
