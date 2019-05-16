@@ -302,7 +302,7 @@ $(document).data('clips', {
     'h-accept'   : ['han/accept'],
     'h-gao'      : ['han/gao-1', 'han/gao-2'],
     'h-zheng'    : ['han/zheng'],
-    'h-bijao'    : ['han/bijao'],
+    'h-bijiao'   : ['han/bijiao'],
     'h-noprob'   : ['han/noprob'],
     'h-bath'     : ['han/bath'],
     'h-gee'      : ['han/gee'],

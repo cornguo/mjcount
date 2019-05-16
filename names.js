@@ -302,7 +302,7 @@ $(document).data('names', {
     'h-accept'   : '接受',
     'h-gao'      : '搞',
     'h-zheng'    : '正',
-    'h-bijao'    : '比較',
+    'h-bijiao'   : '比較',
     'h-mgx'      : '沒關係',
     'h-bath'     : '洗澡',
     'h-gee'      : '激',

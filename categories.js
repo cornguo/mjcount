@@ -302,7 +302,7 @@ $(document).data('categories', {
     'h-accept'   : 'FA-DA-CAI',
     'h-gao'      : 'FA-DA-CAI',
     'h-zheng'    : 'FA-DA-CAI',
-    'h-bijao'    : 'FA-DA-CAI',
+    'h-bijiao'   : 'FA-DA-CAI',
     'h-mgx'      : 'FA-DA-CAI',
     'h-bath'     : 'FA-DA-CAI',
     'h-gee'      : 'FA-DA-CAI',
