@@ -1,9 +1,12 @@
 #!/bin/sh
-for file in `ls ../clips/devotion/*.ogg`
+for dir in `ls ../clips`
 do
-    mkdir -p devotion
-    fname=`basename $file | cut -d '.' -f1`
-    rm -f devotion/$fname.mp3 devotion/$fname.ogg
-    ffmpeg -loglevel panic -i ../clips/devotion/$fname.ogg -acodec libvorbis -ac 1 -ab 48k devotion/$fname.ogg
-    ffmpeg -loglevel panic -i ../clips/devotion/$fname.ogg -acodec libmp3lame -ac 1 -ab 48k devotion/$fname.mp3
+    for file in `ls ../clips/$dir/*.ogg`
+    do
+        mkdir -p $dir
+        fname=`basename $file | cut -d '.' -f1`
+        rm -f $dir/$fname.mp3 $dir/$fname.ogg
+        ffmpeg -loglevel panic -i ../clips/$dir/$fname.ogg -acodec libvorbis -ac 1 -ab 48k $dir/$fname.ogg
+        ffmpeg -loglevel panic -i ../clips/$dir/$fname.ogg -acodec libmp3lame -ac 1 -ab 48k $dir/$fname.mp3
+    done
 done
